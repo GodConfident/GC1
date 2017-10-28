@@ -11,6 +11,7 @@
 |
 */
 
+<<<<<<< HEAD
 
 
 Route::get('/home/index', function () {
@@ -28,3 +29,13 @@ Route::get('/a', function () {
 // 	Route::resource('index', 'IndexController');
 // });
 
+=======
+Route::get('/', function () {
+    return view('welcome');
+});
+// 后台首页
+Route::controller('/admin/login', 'Admin\LoginController');
+Route::get('/admin/content', 'Admin\IndexController@Content');
+Route::get('/admin/user', 'Admin\UserController@User');
+Route::resource('/admin', 'Admin\IndexController');
+>>>>>>> origin/kuaizi

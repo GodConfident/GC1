@@ -38,9 +38,13 @@
     <body>
         <div class="container">
             <div class="content">
+<<<<<<< HEAD
 
                 <div class="title">GodConfident</div>
 
+=======
+                <div class="title">GodConfident</div>
+>>>>>>> origin/kuaizi
             </div>
         </div>
     </body>

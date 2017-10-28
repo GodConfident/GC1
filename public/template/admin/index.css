@@ -1,0 +1,14 @@
+.ico>i{font-size: 40px;}
+.ico,.cont{float: left;}
+.index .row li{display: inline-block;width: 260px;height: 80px;border-radius: 5px;overflow:hidden;margin-right: 18px;background: #fff;box-shadow: 0 1px 1px rgba(0,0,0,0.05);}
+.index .ico{line-height: 80px;width: 40%;text-align: center;color:#fff;}
+.index .cont{text-align: center;width: 60%;}
+.index .cont h3{font-size: 18px;margin-top: 17px;}
+.index .cont p{font-size: 14px;margin-top: 5px;color: #666}
+.index{}
+/*.index .content{width: 90%;margin: 0 auto}*/
+.index .model{width: 49.3%;background: #fff;box-shadow: 3px 3px 1px rgba(0,0,0,0.05);;float: left;margin: 0 auto;border-radius: 3px;margin: 15px 0 0 5px;}
+.index .model>p{margin: 15px;font-size: 18px;color: #666;text-align: left;}
+.index .model .content{margin: 10px;overflow:auto;height:320px}
+.index .rl{float: right;}
+.layui-elem-quote{background: #fff;margin-bottom: 0px;margin-top: 10px;color: #ff6c60;}
