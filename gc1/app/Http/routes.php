@@ -21,6 +21,10 @@ Route::get('/home/index', function () {
 Route::get('layouts1', function () {
    return view('home.layouts1');
 });
+
+Route::get('/a', function () {
+   return view('admin.index');
+});
 // Route::group(['middleware'=>'login'],function(){
 // 	Route::resource('index', 'IndexController');
 // });
