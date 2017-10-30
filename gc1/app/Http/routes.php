@@ -14,6 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/a', function () {
-    echo "string";
+
+Route::get('/home/index', function () {
+   return view('home.index');
 });
+Route::get('layouts1', function () {
+   return view('home.layouts1');
+});
+// Route::group(['middleware'=>'login'],function(){
+// 	Route::resource('index', 'IndexController');
+// });
