@@ -1,0 +1,12 @@
+{
+    "name": "administrator/laravel",
+    "authors": [
+        {
+            "name": "whtcgh",
+            "email": "godconfident@qq.com"
+        }
+    ],
+    "require": {
+    	"laravel/framework": "5.1.*"
+    }
+}
