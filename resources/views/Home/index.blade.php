@@ -1,18 +1,18 @@
 
 <!-- 首页 尾部 -->
-@extends('home.footer')
+@extends('Home.footer')
 
 <!-- 首页 顶部 广告 -->
-@extends('home.ad_index_top')
+@extends('Home.ad_index_top')
 
 <!-- 首页 头部 -->
-@extends('home.header')
+@extends('Home.header')
 
 <!-- 首页 头部 登录 -->
-@extends('home.index_login')
+@extends('Home.index_login')
 
 <!-- 首页 头部  +  右侧边栏  +  导航区域 -->
-@extends('home.index_nav')
+@extends('Home.index_nav')
 
 
 <!-- 首页 中间各个新闻模块 -->
