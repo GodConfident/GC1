@@ -19,12 +19,16 @@ Route::get('layouts1', function () {
 // 	Route::resource('index', 'IndexController');
 // });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// 前台新闻路由
+Route::resource('/home/news', 'Home\NewsControllers');
+
 // 后台首页
 Route::controller('/admin/login', 'Admin\LoginController');
 Route::get('/admin/content', 'Admin\IndexController@Content');
 Route::get('/admin/user', 'Admin\UserController@User');
-Route::resource('/admin', 'Admin\IndexController');
 
+
+//后台新闻路由
+Route::resource('/admin/news', 'Admin\NewsControllers');
+
+Route::resource('/admin', 'Admin\IndexController');

@@ -13,6 +13,4 @@ class LoginController extends Controller
     {
        return view('Admin.login',['title'=>'后台登陆']);
     }
-
-   
 }
