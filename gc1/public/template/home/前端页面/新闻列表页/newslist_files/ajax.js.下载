@@ -1,0 +1,165 @@
+var debug_mode = false;
+var loading_mode = true;
+var return_data = "";
+
+
+function PAdebug(msg){
+	if(debug_mode){
+		alert(msg);
+	}
+}
+
+function create_XML_object() {
+	PAdebug("create_XML_object() called..")
+
+	var A;
+   
+	var msxmlhttp = new Array(
+	//'Msxml2.XMLHTTP.5.0',
+	'Msxml2.XMLHTTP.4.0',
+	'Msxml2.XMLHTTP.3.0',
+	'Msxml2.XMLHTTP',
+	'Microsoft.XMLHTTP');
+	for (var i = 0; i < msxmlhttp.length; i++) {
+		try {
+			A = new ActiveXObject(msxmlhttp[i]);
+		} catch (e) {
+			A = null;
+		}
+	}
+	
+    
+
+	if(!A && typeof XMLHttpRequest != "undefined")
+	A = new XMLHttpRequest();
+	if (!A)
+	PAdebug("Could not create connection object.");
+	return A;
+}
+xmlHttp = create_XML_object();
+
+
+function page(pagenum) {
+    process('GET', '/ithome/getajaxdata.aspx?page=' + pagenum + '&type=indexpage', 'leftcontent');
+}
+
+function wappage(pagenum) {
+    process('GET', '/ithome/getajaxdata.aspx?page=' + pagenum + '&type=wappage', 'wapindex');
+}
+
+
+
+
+function wapcategorypage(pagenum , categoryid) {
+	  loading_mode = false;
+    process('GET', '/ithome/getajaxdata.aspx?page=' + pagenum + '&type=wapcategorypage&categoryid=' + categoryid, 'categorylist');
+}
+
+function wapindexpage(pagenum) {
+    loading_mode = false;
+    process('GET', '/ithome/getajaxdata.aspx?page=' + pagenum + '&type=wapcategorypage', 'wapindexnewlist');
+    loading_mode = true;
+}
+function wapindexpagequick(pagenum) {
+    loading_mode = false;
+    process('GET', '/ithome/getajaxdata.aspx?page=' + pagenum + '&type=wappagequick', 'wapindexnewlist');
+    loading_mode = true;
+}
+
+
+function process(request_type,openurl,datas,post_data1,block)
+{
+
+			if(loading_mode){
+				document.getElementById('loading').style.display = "";
+			}
+	PAdebug("process s");
+	if (openurl.indexOf("?") > 0)
+                {
+                    openurl += "&randnum=" + Math.random();
+                }
+                else
+                {
+                    openurl += "?randnum=" + Math.random();
+                }
+	urls = openurl;	
+	
+	PAdebug(datas);
+	return_data = datas;
+	if (typeof(request_type) == "undefined" || request_type == "")
+		request_type = "GET";
+	if (request_type == "GET") {
+		post_data = null;
+		PAdebug(urls);
+	}
+	else if (request_type == "POST") {
+		post_data = post_data1;
+	}
+	else {
+		PAdebug("Illegal request type: " + request_type);
+	}
+
+	xmlHttp.open(request_type, urls, true);
+	
+	if (request_type == "POST") {
+		xmlHttp.setRequestHeader("Method", "POST " + urls + " HTTP/1.1");
+		xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	}
+	xmlHttp.onreadystatechange = handleServerResponse;
+	xmlHttp.send(post_data);
+	
+
+    
+}
+
+
+
+function handleServerResponse()
+{
+
+	if(xmlHttp.readyState == 1) {
+		if(loading_mode){
+			document.getElementById('loading').style.display = "";
+		}
+		
+	}
+	if (xmlHttp.readyState == 4)
+	{
+		if (xmlHttp.status == 200)
+		{
+			xmlResponse = xmlHttp.responseText;
+			PAdebug(return_data);
+			
+			
+			
+			if(xmlResponse!=""){
+
+			    PAdebug(xmlResponse);
+
+			    if (return_data == "wapindexnewlist")
+			    {
+			       
+			         $item = $(xmlResponse).hide();  
+               $("#wapindexnewlist").append($item);  
+               $item.fadeIn();  
+			      }
+			    else if (return_data == "categorylist")
+			        $("#categorylist").append(xmlResponse);
+                else
+				document.getElementById(return_data).innerHTML = xmlResponse;
+
+				//eval(xmlResponse);
+			}else{
+				document.getElementById('error_data').innerHTML = '<font color=red>Error!</font>';
+			}
+
+			if(loading_mode){
+				//document.getElementById('loading').style.display = "none";
+			}
+		}
+		else
+		{
+			PAdebug("There was a problem accessing the server: " + xmlHttp.statusText);
+		}
+	}
+}
