@@ -25,6 +25,7 @@ Route::get('layouts1', function () {
 Route::get('/a', function () {
    return view('admin.index');
 });
+
 // Route::group(['middleware'=>'login'],function(){
 // 	Route::resource('index', 'IndexController');
 // });

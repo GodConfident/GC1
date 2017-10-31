@@ -15,10 +15,6 @@
 @extends('home.index_nav')
 
 
-
-
-
-
 <!-- 首页 中间各个新闻模块 -->
 @section('content')
 <div class="con-block">
