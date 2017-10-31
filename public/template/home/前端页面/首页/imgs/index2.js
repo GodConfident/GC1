@@ -1,0 +1,1 @@
+document.write('<iframe src="//img.ithome.com/file/js/money/pc/index2.htm" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="width:728px;height:90px"></iframe>')

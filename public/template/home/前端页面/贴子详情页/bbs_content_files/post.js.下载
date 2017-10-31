@@ -1,0 +1,108 @@
+﻿
+
+
+
+function FavPost(postid)
+{
+    $.ajax({
+        type: "POST",
+        url: "/quan/postop.aspx",
+        data: "postid=" + postid + "&type=favpost",
+        success: function (msg) {
+            if (msg.indexOf("没有登录") >= 0) {
+                location.replace("/quan/login.aspx");
+            }
+            else {
+                ShowMessage(msg);
+            }
+        }
+    });
+}
+
+
+
+
+
+function delPost(postid) {
+    if (confirm("确定要删除这个贴子？")) {
+        $.ajax({
+            type: "POST",
+            url: "/quan/postop.aspx",
+            data: "postid=" + postid + "&type=delpost",
+            success: function (msg) {
+                if (msg.indexOf("/") >= 0) {
+                    if (window.confirm('你确定要关闭页面吗？'))
+                         window.close()
+                }
+                else {
+                    ShowMessage(msg);
+                }
+            }
+        });
+    }
+}
+
+
+function recommendPost(postid) {
+    $.ajax({
+        type: "POST",
+        url: "/quan/postop.aspx",
+        data: "postid=" + postid + "&type=recommend",
+        success: function (msg) {
+          ShowMessage(msg)
+        }
+    });
+}
+
+function postHandled(postid) {
+    $.ajax({
+        type: "POST",
+        url: "/quan/postop.aspx",
+        data: "postid=" + postid + "&type=posthandled",
+        success: function (msg) {
+            window.opener = null;
+            window.close();
+        }
+    });
+}
+
+
+
+$(function () {
+    document.onkeydown = function (event) {
+        var e = event || window.event;
+        var a = e.keyCode;
+        if (a == 13 && event.ctrlKey) {
+            obj = document.getElementById("btnReply");
+            if (obj) {
+                $("#btnReply").click();
+            }
+
+        }
+    };
+});
+
+$(".comm_title").delegate(".order", "click",
+function (e) {
+    e.preventDefault();
+    if ($(".order").html() == "倒序显示")
+    {
+        $("#ulcommentlist").hide();
+        $("#ulcommentlistorder").fadeIn("slow");
+        $(".order").html("正序显示");
+        if ($("#ulcommentlistorder").html() == "") {
+            var new_item = $("<div/>").load("/quan/GetAjaxData.aspx", { "postid": $("#postid").val(), "type": "replypage", "page": 1, "order": "order" }, function () {
+            }).hide();
+            $("#ulcommentlistorder").append(new_item);
+            new_item.fadeIn("slow");
+        }
+    }
+    else
+    {
+        $("#ulcommentlist").fadeIn("slow");
+        $("#ulcommentlistorder").hide();
+        $(".order").html("倒序显示");
+    }
+
+   
+})

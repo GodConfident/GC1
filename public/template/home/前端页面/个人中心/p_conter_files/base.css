@@ -1,0 +1,436 @@
+* {
+    font-family: "Microsoft Yahei",tahoma;
+}
+
+
+/*基本信息*/
+
+.basic-info {
+    display: block;
+    min-width: 742px;
+}
+
+.basic-info-m {
+    min-width: initial;
+}
+
+.basic-block {
+    display: inline-block;
+    vertical-align: middle;
+    width: 32%;
+    min-width: 360px;
+    height: 130px;
+    margin: 0.35%;
+    background-color: white;
+}
+
+.basic-block-m {
+    width: 100%;
+    min-width: initial;
+    margin: 5px 0;
+}
+
+.basic-line {
+    display: block;
+}
+
+.level-line1 {
+    padding: 29px 0px 0px 46px;
+}
+
+.level-line1-m {
+    padding: 29px 0px 0px 26px;
+}
+
+.level-line2 {
+    padding: 10px 0px 0px 93px;
+}
+
+.level-line2-m {
+    padding: 10px 0px 0px 73px;
+}
+
+.line-item {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.level-number {
+    font-size: 18px;
+    line-height: 25px;
+    color: #333;
+    margin: 0px 15px 0px 19px;
+}
+
+.icon-sun, .icon-moon, .icon-star {
+    margin-top: 5px;
+}
+
+.level-state {
+    color: #999;
+}
+
+.left-days {
+    margin-left: 40px;
+}
+
+.left-days-m {
+    display: block;
+    margin-left: 0px;
+}
+
+.my-coin {
+    font-size: 18px;
+    line-height: 25px;
+    color: #333;
+    margin: 0 15px 0 17px;
+}
+
+.coin-number {
+    font-size: 20px;
+    line-height: 25px;
+    color: #ff7826;
+}
+
+.coin-text {
+    color: #ff7826;
+    margin-top: 5px;
+    margin-left: 2px;
+}
+
+.coin-btn {
+    width: 114px;
+    height: 32px;
+    border: solid 1px #ff7826;
+    border-radius: 16px;
+    cursor: pointer;
+    opacity: 1.0;
+}
+
+    .coin-btn:hover {
+        opacity: 0.8;
+    }
+
+    .coin-btn:active {
+        opacity: 1.0;
+    }
+
+    .coin-btn img {
+        display: inline-block;
+        margin-top: 6px;
+        margin-left: 12px;
+    }
+
+    .coin-btn div {
+        float: right;
+        color: #ff7826;
+        font-size: 16px;
+        text-align: center;
+        line-height: 32px;
+        padding-left: 8px;
+        padding-right: 10px;
+    }
+
+.coin-mall {
+    margin-right: 15px;
+}
+
+.coin-mall-m {
+    margin-right: 8px;
+}
+
+.my-medal {
+    color: #333;
+    font-size: 18px;
+    margin-left: 19px;
+}
+
+.medal-qiyu {
+    margin: 0 12px;
+}
+
+/*详细信息*/
+
+.detail-info {
+    background-color: white;
+    display: block;
+    width: 97.88%;
+    min-width: 729px;
+    height: auto;
+    margin: 0.35%;
+}
+
+.detail-info-m {
+    min-width: initial;
+    margin: 0;
+    width: 100%;
+}
+
+.detail-line {
+    display: block;
+    max-width: 500px;
+    padding: 10px 20px;
+}
+
+.detail-line-m {
+    padding: 10px 15px;
+}
+
+.detail-line:first-child {
+    padding-top: 20px;
+}
+
+.detail-title-item {
+    position: absolute;
+    width: 70px;
+    height: 40px;
+    color: #666;
+    font-size: 16px;
+    text-align: right;
+    line-height: 40px;
+}
+
+.detail-content-item {
+    margin-left: 90px;
+    font-size: 16px;
+    line-height: 40px;
+}
+
+.detail-input {
+    width: 100%;
+    height: 40px;
+    padding: 5px;
+    border: solid 1px #ddd;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+.detail-nick {
+    width: 310px;
+}
+
+.detail-nick-m {
+    width: 100%;
+}
+
+.detail-tail {
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+}
+
+.detail-tail-m {
+    display: block;
+}
+
+.detail-modify-count {
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+}
+
+.detail-link {
+    font-size: 14px;
+    color: #008eec;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.detail-truename {
+    width: 34%;
+    margin-right: 2.3%;
+    display: inline-block;
+}
+
+.detail-truename-m {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.detail-phone {
+    width: 62.5%;
+    display: inline-block;
+}
+
+.detail-phone-m {
+    width: 100%;
+}
+
+.detail-address {
+    height: 100px;
+    margin-top: 10px;
+}
+
+.validator {
+    font-size: 12px;
+    color: #ff5f58;
+}
+
+.save-btn {
+    width: 122px;
+    height: 42px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 42px;
+    margin-bottom: 15px;
+    opacity: 1.0;
+    background-color: #348fe2;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+}
+
+    .save-btn:hover {
+        opacity: 0.8;
+    }
+
+    .save-btn:active {
+        opacity: 1.0;
+        background-color: #136fb8;
+    }
+
+.modify-mask {
+    display: none;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    position: fixed;
+    left: 200px;
+    top: 0;
+    background-color: #888;
+    opacity: 0.5;
+}
+
+.modify-mask-m {
+    left: 0px;
+}
+
+.modify-panel {
+    display: none;
+    width: 350px;
+    height: 550px;
+    z-index: 101;
+    left: 50%;
+    top: 50%;
+    margin-left: -175px;
+    margin-top: -250px;
+    position: fixed;
+    background-color: #f1f2f7;
+    border: solid 1px #ddd;
+}
+
+.modify-title {
+    height: 60px;
+    line-height: 60px;
+    font-size: 18px;
+    color: #008eec;
+    background-color: white;
+    padding-left: 5%;
+    margin-bottom: 10px;
+}
+
+.modify-item-account {
+    padding-left: 5%;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.modify-item-title {
+    font-size: 16px;
+    padding-left: 5%;
+    margin-bottom: 10px;
+    color: #008eec;
+}
+
+.modify-item-mail {
+    width: 90%;
+    height: 40px;
+    border: solid 1px #ddd;
+    margin: 0 5%;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.modify-input {
+    width: 100%;
+    height: 40px;
+    padding: 5px;
+    border: none;
+    font-size: 14px;
+}
+
+.modify-input-code {
+    width: 62.52%;
+}
+
+.modify-input-psw {
+    width: 62.52%;
+}
+
+.modify-item-split {
+    color: #999
+}
+
+.modify-code-img {
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+.modify-sendchkcode {
+    width: 34%;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    color: #008eec;
+}
+
+.modify-input-sendchkcode-disable {
+    cursor: default;
+    color: #8A8A8A;
+}
+
+.modify-btn-parent {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.modify-btn {
+    width: 120px;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-confirm {
+    background-color: #008eec;
+    opacity: 1.0;
+}
+
+    .btn-confirm:hover {
+        opacity: 0.9;
+    }
+
+    .btn-confirm:active {
+        background-color: #136fb8;
+        opacity: 1.0;
+    }
+
+.btn-cancel {
+    background-color: #ffb000;
+    opacity: 1.0;
+    margin-left: 10px;
+}
+
+    .btn-cancel:hover {
+        opacity: 0.9;
+    }
+
+    .btn-cancel:active {
+        background-color: #ffb000;
+        opacity: 1.0;
+    }

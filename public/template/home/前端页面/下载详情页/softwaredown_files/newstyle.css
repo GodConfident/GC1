@@ -1,0 +1,126 @@
+﻿/*重置*/
+*{margin:0;padding:0;line-height:16px;font-size:12px;font-family:"微软雅黑";}
+img{border:none 0;}
+li{list-style:none;}
+a{text-decoration:none;color:#d2d2d2;}
+h5{ font-weight:normal;}
+h2{ font-weight:normal;}
+body{background-color:#fcfcfc;padding-top: 100px;}
+
+.ipad-left {padding-left:10px;}
+.ipad-right {padding-right:10px;}
+/*头部*/
+.topBox{height:100px;background-color:#ffffff;position: fixed;top: 0;left: 0;z-index: 1500;width: 100%;border-bottom:1px #f2f2f2 solid;}
+.logoBox{width:1020px;margin:0 auto;overflow:hidden;}
+.logoBoxipad{width:1010px;margin:0 auto;overflow:hidden; padding-left: 10px;}
+.logo,.logoText,.navBox a{float:left;}
+.returnhome{float:right;padding: 35px 10px 0 0;}
+.logo img{display:block;width:125px;height:30px;}
+.logo{padding:35px 0 0 0px;}
+.logoText a{font-size:22px;color:#888;padding-left:15px;line-height:100px;font-weight: lighter;border-left: #bbb 1px solid;}
+.navBox {float:left;}
+.navBox {padding: 35px 0 0 120px;text-align:center;}
+.navBox a{display:block;color:#666;font-size:18px;line-height:30px;}
+.navBox a:hover {border-bottom:2px #d22222 solid;text-align: center;}
+.returnhome a {display:block;color:#666;font-size:18px;line-height:30px;}
+.returnhome a:hover{color:#666;border-bottom:2px #d22222 solid;height:30px;}
+.returnhome img {width:24px;height:24px;vertical-align: text-bottom;padding-right: 8px;}
+.index{width:54px;margin-right:31px;height:30px;cursor: pointer;}
+.index a{color:#666; text-align:center;}
+.index a:hover{color:#666;border-bottom:2px #d22222 solid;height:30px;}
+.select {color:#d22222 !important;border-bottom:2px #d22222 solid;height:30px;}
+.navqiyu {width:100px;margin-right:31px;height:30px;cursor: pointer;}
+.navqiyu a{color:#666; text-align:center;}
+.navqiyu a:hover{color:#666;border-bottom:2px #d22222 solid;height:30px;}
+/*ithome*/
+.ithomeBox{min-width:1020px;height:460px;margin:0 auto;background-color:#f2f2f2;}
+.ithome {width:1020px;margin:0 auto;overflow:hidden;}
+.ithomeipad {width:1000px;margin:0 auto;overflow:hidden;padding: 0 10px;}
+.introduction_icon, .introduction_name{float:left;}
+.introduction, .qrcode_img{float:left;}
+.introductionleft{float:left;width:400px;}
+.introduction_p {float:left;overflow:hidden;color:#666;margin-top:15px;font-size:13px; line-height:20px;}
+.qrcode_img {margin-top:52px;width:95px;height:107px;}
+.screenright {height:460px;float:right;}
+.screenright img{width:550px;height:460px;}
+.introduction {width:283px;height: 130px;padding-top:52px;}
+.introduction img {width:55px;height:55px;}
+.introduction h5 {color:#616161;font-size:30px;margin:15px;}
+
+.device {margin:0px;}
+.device li {overflow:hidden}
+.button {width:150px;height:29px;line-height:29px;text-align:center; border-radius:2px;margin: 20px 0 0 10px;background-color:#fff;}
+.android {width:400px;height:52px;}
+.android img {width:17px;height:17px;margin: 27px 5px 0 0;}
+.android a, .android img{float:left;}
+.greendown {color:#5e883a; border:1px solid #5e883a;}
+.greendown:hover{background:#5d9a29;border:1px solid #5d9a29;color:#ffffff;}
+.greendown:active{background:#619435;border:1px solid #619435;color:#ffffff;}
+.ios {width:500px;height:52px;}
+.ios img {width:17px;height:17px;margin: 27px 5px 0 0;}
+.ios a, .ios img{float:left;}
+.graydown {color:#80817e;border:1px solid #80817e;}
+.graydown:hover{background:#8b8787;border:1px solid #8b8787;color:#ffffff;}
+.graydown:active{background:#737070;border:1px solid #737070;color:#ffffff;}
+.wp {width:400px;height:52px;}
+.wp img {width:17px;height:17px;margin: 27px 5px 0 0;}
+.wp a, .wp img{float:left;}
+.purpledown {color:#762894;border:1px solid #b087c1;}
+.purpledown:hover{background:#9670a6;border:1px solid #9670a6;color:#ffffff;}
+.purpledown:active{background:#795687;border:1px solid #795687;color:#ffffff;}
+.chrome {width:400px;height:52px;}
+.chrome img {width:17px;height:17px;margin: 27px 5px 0 0;}
+.chrome a, .chrome img{float:left;}
+.bluedown {color:#4285f4;border:1px solid #95b8f3;}
+.bluedown:hover{background:#7999ce;border:1px solid #7999ce;color:#ffffff;}
+.bluedown:active{background:#5277b5;border:1px solid #5277b5;color:#ffffff;}
+.pc {width:400px;height:52px;}
+.pc img {width:17px;height:17px;margin: 27px 5px 0 0;}
+.pc a, .pc img{float:left;}
+
+/*lapin*/
+.lapinBox {min-width:1020px;height:460px;background-color:#ffffff;}
+.lapin{width:1020px;margin:0 auto;overflow:hidden;}
+.screenleft {height:460px;float:left;}
+.screenleft img{width:550px;height:460px;}
+.introductionright{float:right;width:400px;}
+
+/*qiyu*/
+.qiyuBox {min-width:1020px;height:460px;margin:0 auto;background-color:#f2f2f2;}
+.qiyu {width:1020px;margin:0 auto;overflow:visible;}
+.qiyuipad {width:1010px;margin:0 auto;overflow:hidden;padding-left: 10px;}
+.introductionleft_qiyu {float:left;width:400px;}
+.screenright_qiyu {height:460px;float:left;margin-right: -400px;}
+.screenright_qiyu img{width:838px;height:460px;}
+
+/*poplines*/
+.poplinesBox {min-width:1020px;height:460px;background-color:#ffffff;}
+.poplines {width:1020px;margin:0 auto;overflow:hidden;}
+
+/*other*/
+.otherBox {min-width:1020px;height:550px;margin:0 auto;background-color:#f2f2f2;}
+.other {width:1020px;margin:0 auto;overflow:hidden;}
+.applicationrow {margin-top:120px; height:140px;}
+.applicationrow2 {margin-top:55px; height:140px;}
+.applicationleft {float:left;}
+.applicationright {float:right;}
+.applicationlogo, .applicationtext, .application_qrcode {float:left;}
+.applicationlogo img{width:50px;height:50px;margin: 10px 20px 0 0;}
+.applicationtext h2 {color:#616161;font-size:18px;margin:15px 0;}
+.applicationtext p {color:#666;}
+.application_qrcode {margin-top:10px;width:95px;height:107px;}
+.wp2 {width:320px;height:52px;}
+.wp2 img {width:17px;height:17px;margin: 27px 5px 0 0;}
+.wp2 a, .wp2 img{float:left;}
+.wpapp {height: 50px;background-color: #811a99;float: left;}
+.wpapp h5 {color:#fff;font-size:20px;padding: 16px 20px;font-weight: lighter;}
+
+/*页脚*/
+.footerBox{min-width:1020px;background-color:#3b3b3b;height:270px;}
+.footer{width:960px;margin:0 auto;padding:60px 0;color:#999;}
+.footer_1 p{padding-bottom:10px;padding-left:92px;}
+.footer_2{ text-align:center;}
+.footer_2 p{padding-bottom:5px;}
+.footer a{color:#999;}
+.footer a:hover{color:#FFFFFF; text-decoration:underline;}
+.footer_2{padding-top:30px;}

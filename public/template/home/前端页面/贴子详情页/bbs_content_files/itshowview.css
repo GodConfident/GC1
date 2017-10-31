@@ -1,0 +1,111 @@
+﻿
+/*sideblock public common style rows   starting*/
+
+
+.sideblockwrapper {
+    width: 278px;
+    border: 1px solid #e8e8e8;
+    border-top: 2px #d22222 solid;
+    padding: 0 10px;
+}
+
+    .sideblockwrapper > ol {
+        display: none;
+        clear: both;
+        padding: 0px;
+    }
+
+.navbar li {
+    float: left;
+    width: 50%;
+    text-align: center;
+    line-height: 35px;
+    height: 35px;
+    font-size: 14px;
+    border-bottom: 1px solid #e9e9e9;
+    cursor: pointer;
+}
+
+    .navbar li.active {
+        border-bottom-color: #d22222;
+        color: #d22222;
+    }
+
+.navbar .baricon {
+    width: 17px;
+    height: 14px;
+    display: inline-block;
+    margin-left: 3px;
+}
+
+    .navbar .baricon.rankingicon {
+        background: url(//img.lapin365.com/resources/images/web/rankingicon-gray.png) no-repeat;
+    }
+
+.navbar li.active .baricon.rankingicon {
+    background: url(//img.lapin365.com/resources/images/web/rankingicon-red.png) no-repeat;
+}
+
+
+.navbar .baricon.fuliicon {
+    background: url(//img.lapin365.com/resources/images/web/hongbao-gray.png) no-repeat;
+}
+
+.navbar li.active .baricon.fuliicon {
+    background: url(//img.lapin365.com/resources/images/web/hongbao-red.png) no-repeat;
+}
+
+.list-row {
+    padding: 10px 0;
+    height: 65px;
+    clear: both;
+    border-bottom: 1px solid #e9e9e9;
+}
+
+    .list-row.noborderbom {
+        border-bottom: none;
+    }
+
+    .list-row a:hover {
+        text-decoration: none;
+    }
+
+    .list-row .small-pic {
+        background: gainsboro;
+        display: block;
+        width: 78px;
+        height: 60px;
+        overflow: hidden;
+        float: left;
+        text-align: center;
+        border: 1px solid #eee;
+    }
+
+        .list-row .small-pic img {
+            width: 80px;
+            height: 60px;
+        }
+
+    .list-row .title-info {
+        float: right;
+        width: 180px;
+        max-height: 37px;
+        overflow: hidden;
+        word-break: break-all;
+    }
+
+    .list-row .date {
+        float: right;
+        margin-top: 10px;
+        color: #a2a2a2;
+    }
+
+.nodataMsg {
+    color: gray;
+    text-align: center;
+    padding: 10px;
+}
+
+
+/*sideblock public common style rows   ending*/
+
