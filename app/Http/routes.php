@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+<<<<<<< HEAD
 
 Route::get('/home/index', function () {
    return view('home.index');
@@ -29,3 +30,5 @@ Route::get('/a', function () {
 // Route::group(['middleware'=>'login'],function(){
 // 	Route::resource('index', 'IndexController');
 // });
+=======
+>>>>>>> gc/master
