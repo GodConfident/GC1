@@ -5,14 +5,15 @@
 	<title>Document</title>
 	  <link rel="stylesheet" href="/template/admin/layui/css/layui.css">
   <link rel="stylesheet" href="/template/admin/fonts/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/template/admin/index.css">
+	<link rel="stylesheet" href="/template/admin/style/index.css">
+	<script src="/template/admin/layui/layui.js"></script>
 </head>
-<body>
+<body style="padding: 10px;background: #eee;">
 
-<div class="index">	
+<div class="index">
 	<ul class="row">
 		<li>
-			<div class="ico" style="background: #1e9fff;"><i class="fa fa-user fa-lg"></i></div>
+			<div class="layui-anim ico" data-anim="layui-anim-rotate" style="background: #1e9fff;"><i class="fa fa-user fa-lg"></i></div>
 			<div class="cont">
 				<h3>5471</h3>
 				<p>用户总量</p>
@@ -92,7 +93,7 @@
 	  </tbody>
 	</table>
 	</div>
-	
+
 </div>
 
 <!-- 今日详情 -->
@@ -130,7 +131,7 @@
 	  </tbody>
 	</table>
 	</div>
-	
+
 </div>
 <!-- 今日帖子 -->
 	<div class="model">
@@ -167,7 +168,7 @@
 	  </tbody>
 	</table>
 	</div>
-	
+
 </div>
 <!-- 今日详情 -->
 	<div class="model rl">
@@ -216,12 +217,11 @@
       <div class="layui-timeline-title">过去</div>
     </div>
   </li>
-</ul>  
+</ul>
 	</div>
-	
+
 </div>
 </div>
-
-
+<p>　</p>
 </body>
 </html>

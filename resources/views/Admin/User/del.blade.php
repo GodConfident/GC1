@@ -7,64 +7,55 @@
 	<link rel="stylesheet" href="/template/admin/fonts/css/font-awesome.min.css">
 	<script src="/template/admin/layui/layui.js"></script>
 </head>
-<body style="padding: 10px;background: #fff;">
+<body style="padding: 10px;">
 <div class="user">
 	<fieldset class="layui-elem-field layui-field-title">
-		<legend>新闻管理</legend>
+		<legend>用户回收站</legend>
 	</fieldset>
+
 	<blockquote class="layui-elem-quote">
 		<form action="/user" method="get">
 			<div class="layui-input-inline">
-				<input type="text" name="username" lay-verify="required"  placeholder="请输入关键词" value="" autocomplete="off" class="layui-input">
+				<input type="text" name="username" lay-verify="required"  placeholder="请输入用户名" value="" autocomplete="off" class="layui-input">
 			</div>
 			<button class="layui-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
-			<button class="layui-btn layui-btn-danger" id='tjyh'>添加新闻</button>
 		</form>
 	</blockquote>
 	<div class="layui-form">
-		<table class="layui-table" lay-size="sm" style="margin: 0 0;">
+		<table class="layui-table" lay-size="sm" style="width: 1100px;margin: 0 0;text-align: center">
 			<colgroup>
-				<col width="60">
 				<col width="80">
+				<col width="150">
 				<col width="130">
-				<col width="160">
-				<col width="60">
-				<col width="100">
-				<col width="100">
-				<col width="200">
-				<col width="100">
+				<col width="80">
+				<col width="170">
+				<col width="170">
+				<col>
+				<col width="130">
 			</colgroup>
 			<thead>
-			<tr >
-				<th >ID</th>
-				<th >标题</th>
-				<th >内容</th>
-				<th >图片</th>
-				<th >板块</th>
-				<th >创建时间</th>
-				<th >修改时间</th>
-				<th >操作</th>
-				<th >删除时间</th>
+			<tr>
+				<th>ID</th>
+				<th>用户名</th>
+				<th>昵称</th>
+				<th>状态</th>
+				<th>注册时间</th>
+				<th>删除时间</th>
+				<th>操作</th>
 			</tr>
 			</thead>
 			<tbody>
-					{{--dd($data)--}}
-					@foreach ($data as $k => $v)
-					<tr>
-					    <td> {{ $v['id']}}</td>
-					    <td> {{ $v['title']}}</td>
-					    <td> {{ $v['content']}}</td>
-					    <td> {{ $v['img']}}</td>
-					    <td> {{ $v['tid']}}</td>
-					    <td> {{ $v['created_at']}}</td>
-					    <td> {{ $v['updated_at']}}</td>
+				<tr>
+					<td>18</td>
+					<td>username</td>
+					<td>较长的用户名</td>
+					<td><span class="layui-badge-rim layui-bg-green">正常</span></td>
+					<td>2017-02-30 15:23</td>
+					<td></td>
 					<td>
-						<a class="layui-btn layui-btn-mini layui-btn-normal" href="/admin/edit/" ><i class="layui-icon">&#xe642;</i> 编辑</a>
-						<a class="layui-btn layui-btn-mini layui-btn-danger" href="/admin/del/"><i class="layui-icon">&#xe640;</i> 回收</a>
+						<a class="layui-btn layui-btn-mini layui-btn-normal" href="/user/edit/" ><i class="fa fa-mail-reply"></i> 恢复用户</a>
+						<a class="layui-btn layui-btn-mini layui-btn-danger" href="/user/del/"><i class="fa fa-trash"></i> 彻底删除</a>
 					</td>
-					    <td> {{ $v['deleted_at']}}</td>
-					</tr>
-					@endforeach
 			</tbody>
 		</table>
 	</div>
