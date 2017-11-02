@@ -3,8 +3,3 @@
 Homestead.yaml
 Homestead.json
 .env
-public/web.config
-resources
-/storage
-server.php
-./.*

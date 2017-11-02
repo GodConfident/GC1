@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Model\newstypemodel;
 
-class IndexController extends Controller
+class NewsTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,26 +17,23 @@ class IndexController extends Controller
      */
     public function index()
     {
-         return view('Admin.admin',['title'=>'后台首页']);
-    }
-    public function Content()
-    {
-        // echo "string";
-        return view('Admin.Index.index',['title'=>'后台首页']);
-    }
-    /**
-     * public function index()
-    {
-        return view('Admin.layout.index',['title'=>'后台首页']);
+        // echo "newstype";
+        $data = newstypemodel::all();
+        // $data = $data ->get();
+        // dd($data);
+  //        foreach ($data as $k) {
+		//     echo $k->id." ";
+		//     echo $k->type." ";
+		//     echo $k->tstatus." <br>";
+		// }
+        return view('Admin.News.news_type',compact('data'));
     }
 
-     */
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function create()
     {
         //
@@ -71,7 +69,10 @@ class IndexController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data =  newstypemodel::find($id);
+        // dd($data);
+        // return view('admin.user.edit',['title'=>'用户修改','user'=>$user]);
+        return view('/Admin.News.newstypeedit',compact('data'));
     }
 
     /**
@@ -83,7 +84,7 @@ class IndexController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        echo "update";
     }
 
     /**
@@ -94,6 +95,28 @@ class IndexController extends Controller
      */
     public function destroy($id)
     {
-        //
+       //接受用户id
+        // $user = newstypemodel::find($id);
+        // // 错误处理
+        // if($user->delete()){
+        //     return redirect('/admin/newstype')->with('success','删除成功');
+        // }else{
+        //     return back()->with('error','删除失败');
+        // }
+ // echo  $id;
+        $data = [];
+        $re = newstypemodel::find($id)->delete();
+        if($re){
+            $data=[
+                'status'=>0,
+                'msg'=>'删除成功'
+            ];
+        }else{
+            $data=[
+                'status'=>1,
+                'msg'=>'删除失败'
+            ];
+        }
+        return $data;
     }
 }

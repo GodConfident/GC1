@@ -3,225 +3,141 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	  <link rel="stylesheet" href="/template/admin/layui/css/layui.css">
-  <link rel="stylesheet" href="/template/admin/fonts/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/template/admin/index.css">
+	<link rel="stylesheet" href="/template/admin/layui/css/layui.css">
+	<link rel="stylesheet" href="/template/admin/fonts/css/font-awesome.min.css">
+	<script src="/template/admin/layui/layui.js"></script>
+	<script src="/template/admin/jquery-1.8.3.min.js"></script>
 </head>
-<body>
+<body style="padding: 10px;">
+<div class="user">
+	<fieldset class="layui-elem-field layui-field-title">
+		<legend>用户管理</legend>
+	</fieldset>
 
-<div class="index">	
-	<ul class="row">
-		<li>
-			<div class="ico" style="background: #1e9fff;"><i class="fa fa-user fa-lg"></i></div>
-			<div class="cont">
-				<h3>5471</h3>
-				<p>用户总量</p>
+	<blockquote class="layui-elem-quote">
+		<form action="/user" method="get">
+			<div class="layui-input-inline">
+				<input type="text" name="username" lay-verify="required"  placeholder="请输入用户名" value="" autocomplete="off" class="layui-input">
 			</div>
-		</li>
-		<li>
-			<div class="ico" style="background: #ff6c60;"><i class="fa fa-user-plus fa-lg"></i></div>
-			<div class="cont">
-				<h3>5471</h3>
-				<p>今日新增</p>
-			</div>
-		</li>
-		<li>
-			<div class="ico" style="background: #009688;"><i class="fa fa-newspaper-o fa-lg"></i></div>
-			<div class="cont">
-				<h3>5471</h3>
-				<p>文章总数</p>
-			</div>
-		</li>
-		<li>
-			<div class="ico" style="background: #5fb878;"><i class="fa fa-file-text-o fa-lg"></i></div>
-			<div class="cont">
-				<h3>5471</h3>
-				<p>今日新增</p>
-			</div>
-		</li>
-		<li>
-			<div class="ico" style="background: #ff5722;"><i class="fa fa-bar-chart fa-lg"></i></div>
-			<div class="cont">
-				<h3>5471</h3>
-				<p>访问IP</p>
-			</div>
-		</li>
-		<li style="margin-right: 0px">
-			<div class="ico" style="background:#f7b824;"><i class="fa fa-globe fa-lg"></i></div>
-			<div class="cont">
-				<h3>5471</h3>
-				<p>浏览UP</p>
-			</div>
-		</li>
-
-	</ul>
-	<!-- 主题内容 -->
-<blockquote class="layui-elem-quote">这个貌似不用多介绍，因为你已经在太多的地方都看到</blockquote>
-	<!-- 服务器内容 -->
-	<div class="model">
-	<p class="title"><i class="fa fa-server"></i> 服务器信息</p>
-	<hr class="layui-bg-gray">
-		<div class="content">
-		<table class="layui-table">
-	  <colgroup>
-	    <col width="150px">
-	    <col>
-	  </colgroup>
-	  <tbody>
-	    <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>PHP</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	    <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	  </tbody>
-	</table>
+			<button class="layui-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
+			<button class="layui-btn layui-btn-danger" id='tjyh'>添加用户</button>
+		</form>
+	</blockquote>
+	<div class="layui-form">
+		<table class="layui-table" lay-size="sm" style="width: 1550px;margin: 0 0;text-align: center">
+			<colgroup>
+				<col width="80">
+				<col width="150">
+				<col width="130">
+				<col width="60">
+				<col width="150">
+				<col width="110">
+				<col width="80">
+				<col width="80">
+				<col width="170">
+				<col width="170">
+				<col>
+				<col width="170">
+			</colgroup>
+			<thead>
+			<tr>
+				<th>ID</th>
+				<th>用户名</th>
+				<th>昵称</th>
+				<th>年龄</th>
+				<th>邮箱</th>
+				<th>手机号</th>
+				<th>状态</th>
+				<th>类型</th>
+				<th>注册时间</th>
+				<th>上次登陆</th>
+				<th>操作</th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>18</td>
+					<td>username</td>
+					<td>较长的用户名</td>
+					<td>26</td>
+					<td>usernamepass@qq.com</td>
+					<td>15332426402</td>
+					<td><span class="layui-badge-rim layui-bg-green">正常</span></td>
+					<td><span class="layui-badge-rim layui-bg-blue">管理员</span></td>
+					<td>2017-02-30 15:23</td>
+					<td>2017-07-14 14:21</td>
+					<td>
+						<a class="layui-btn layui-btn-mini layui-btn-normal" href="/user/edit/" ><i class="fa fa-edit"></i> 修改用户</a>
+						<a class="layui-btn layui-btn-mini layui-btn-danger" href="/user/del/"><i class="fa fa-trash"></i> 删除用户</a>
+					</td>
+			</tbody>
+		</table>
 	</div>
-	
-</div>
 
-<!-- 今日详情 -->
-	<div class="model rl">
-	<p class="title"><i class="fa fa-users"></i> 会员信息</p>
-	<hr class="layui-bg-gray">
-		<div class="content">
-		<table class="layui-table">
-	  <colgroup>
-	    <col width="150px">
-	    <col>
-	  </colgroup>
-	  <tbody>
-	    <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>PHP</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	    <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	  </tbody>
-	</table>
-	</div>
-	
-</div>
-<!-- 今日帖子 -->
-	<div class="model">
-	<p class="title"><i class="fa fa-bar-chart-o"></i> 流量统计</p>
-	<hr class="layui-bg-gray">
-		<div class="content">
-		<table class="layui-table">
-	  <colgroup>
-	    <col width="150px">
-	    <col>
-	  </colgroup>
-	  <tbody>
-	    <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>PHP</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	    <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	  </tbody>
-	</table>
-	</div>
-	
-</div>
-<!-- 今日详情 -->
-	<div class="model rl">
-	<p class="title"><i class="fa fa-bookmark-o"></i> 更新日志</p>
-	<hr class="layui-bg-gray">
-		<div class="content">
-	<ul class="layui-timeline">
-  <li class="layui-timeline-item">
-    <i class="layui-icon layui-timeline-axis"></i>
-    <div class="layui-timeline-content layui-text">
-      <h3 class="layui-timeline-title">8月18日</h3>
-      <p>
-        layui 2.0 的一切准备工作似乎都已到位。发布之弦，一触即发。
-        <br>不枉近百个日日夜夜与之为伴。因小而大，因弱而强。
-        <br>无论它能走多远，抑或如何支撑？至少我曾倾注全心，无怨无悔 <i class="layui-icon"></i>
-      </p>
-    </div>
-  </li>
-  <li class="layui-timeline-item">
-    <i class="layui-icon layui-timeline-axis"></i>
-    <div class="layui-timeline-content layui-text">
-      <h3 class="layui-timeline-title">8月16日</h3>
-      <p>杜甫的思想核心是儒家的仁政思想，他有<em>“致君尧舜上，再使风俗淳”</em>的宏伟抱负。个人最爱的名篇有：</p>
-      <ul>
-        <li>《登高》</li>
-        <li>《茅屋为秋风所破歌》</li>
-      </ul>
-    </div>
-  </li>
-  <li class="layui-timeline-item">
-    <i class="layui-icon layui-timeline-axis"></i>
-    <div class="layui-timeline-content layui-text">
-      <h3 class="layui-timeline-title">8月15日</h3>
-      <p>
-        中国人民抗日战争胜利72周年
-        <br>常常在想，尽管对这个国家有这样那样的抱怨，但我们的确生在了最好的时代
-        <br>铭记、感恩
-        <br>所有为中华民族浴血奋战的英雄将士
-        <br>永垂不朽
-      </p>
-    </div>
-  </li>
-  <li class="layui-timeline-item">
-    <i class="layui-icon layui-timeline-axis"></i>
-    <div class="layui-timeline-content layui-text">
-      <div class="layui-timeline-title">过去</div>
-    </div>
-  </li>
-</ul>  
-	</div>
-	
-</div>
-</div>
+		<script>
+
+            $('#tjyh').click(function(){
+                layer.open({
+                    type: 2,
+                    title: '添加用户',
+                    shadeClose: true,
+                    shade: 0.8,
+                    area: ['700px', '500px'],
+                    content: 'mobile/' //iframe的url
+                });
+                return false;
+            })
+
+            layui.use(['form', 'layedit', 'laydate'], function(){
+                var form = layui.form
+                    ,layer = layui.layer
+                    ,layedit = layui.layedit
+                    ,laydate = layui.laydate;
+
+                //日期
+                laydate.render({
+                    elem: '#date'
+                });
+                laydate.render({
+                    elem: '#date1'
+                });
+
+                //创建一个编辑器
+                var editIndex = layedit.build('LAY_demo_editor');
+
+                //自定义验证规则
+                form.verify({
+                    title: function(value){
+                        if(value.length < 5){
+                            return '标题至少得5个字符啊';
+                        }
+                    }
+                    ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+                    ,content: function(value){
+                        layedit.sync(editIndex);
+                    }
+                });
+
+                //监听指定开关
+                form.on('switch(switchTest)', function(data){
+                    layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+                        offset: '6px'
+                    });
+                    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+                });
+
+                //监听提交
+                form.on('submit(demo1)', function(data){
+                    layer.alert(JSON.stringify(data.field), {
+                        title: '最终的提交信息'
+                    })
+                    return false;
+                });
 
 
+            });
+		</script>
+</div>
+<p>　</p>
 </body>
 </html>

@@ -74,9 +74,8 @@ grammar_tableExtra: true
 | 名称 | 类型| 长度 | 是否为空 | 索引 | 注释 | 备注 |
 |  ----   |  ---- |  ---- |--------------|--------|-------|-------- |
 |   id    |  int  | 11   |      N        |          |        |  a_i    |
-|  tid | tinyint |  1  |   N   |  UN  |  新闻类型    |   关联类型表  |
-|  nstatus | nstatus |  1  |   N   |  UN  |  新闻状态    |     |
-|  nstatus | cid |  1  |   N   |  UN  |      |     关联内容表|
+|  type | varchar |  50  |   N   |  UN  |  新闻类型    |    |
+|  tstatus | char |100    |   N   |  UN  |  新闻状态    |   0 为顶级模块 1为一级模块  |
 | created_at | int | 11 |  |  |  添加时间  | |
 | updated_at | int | 11 |   |  | 修改时间 | |
 | deleted_at | int | 11 |  |  |  删除时间  | |
@@ -91,7 +90,7 @@ grammar_tableExtra: true
 | img | varchar  | 300  |  |   |  多个图片间用逗号隔开  | |
 | tid | int |  11  |  N  |  普通  |  新闻类型的id  | |
 | nstatus | tinyint | 1 | N  |   | 状态 1: 展示 0:不展示 | 默认:0|
-| cid |  tinyint | 1 |  N |  普通  |    |  关联新闻详情表|
+| cid |  int | 1 |  N |  普通  |    |  关联新闻详情表|
 | created_at  | timestamp | 0 |  |  | 添加时间  | |
 | updated_at | timestamp | 0 |  |  |  修改时间 |  |
 | deleted_at  | timestamp  | 0 |  |  | 删除时间 | |

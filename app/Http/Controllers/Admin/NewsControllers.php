@@ -16,7 +16,7 @@ class NewsControllers extends Controller
      */
     public function index()
     {
-        $data = DB::select('select * from news where id = ?', [1]);
+        $data = DB::table('news')->select()->get();
         // dd($data);
          return view('Admin.News.newslist',['title'=>'新闻列表页','data'=>$data]);
          // return view('Admin.layout.index',['title'=>'后台首页']);
