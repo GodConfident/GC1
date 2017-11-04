@@ -47,7 +47,7 @@
 				<p>访问IP</p>
 			</div>
 		</li>
-		<li style="margin-right: 0px">
+		<li style="margin-right:0px">
 			<div class="ico" style="background:#f7b824;"><i class="fa fa-globe fa-lg"></i></div>
 			<div class="cont">
 				<h3>5471</h3>
@@ -57,10 +57,10 @@
 
 	</ul>
 	<!-- 主题内容 -->
-<blockquote class="layui-elem-quote">这个貌似不用多介绍，因为你已经在太多的地方都看到</blockquote>
+<blockquote class="layui-elem-quote">欢迎管理员admin,本次登陆时间:2017-11-01 20:14:32 上次登陆时间:2017-10-29 15:34:11 当前浏览器是：Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:57.0) Gecko/20100101 Firefox/57.0</blockquote>
 	<!-- 服务器内容 -->
 	<div class="model">
-	<p class="title"><i class="fa fa-server"></i> 服务器信息</p>
+	<p class="title"><i class="fa fa-server"></i> 服务器信息 </p>
 	<hr class="layui-bg-gray">
 		<div class="content">
 		<table class="layui-table">

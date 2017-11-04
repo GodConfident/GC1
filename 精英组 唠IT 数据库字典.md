@@ -31,6 +31,32 @@ grammar_center: true
 grammar_align: true
 grammar_tableExtra: true
 --- 
+## 网站信息表
+
+| 名称 | 类型| 长度 | 是否为空 | 索引  | 备注 |
+|  ----   |  ---- |  ---- |--------------|--------|-------|
+|   id    |  int  | 11   |      否        |       主键   |        |
+| conf_title| char|255| 可以为空    |     | 项目标题|
+| conf_name| char|255| 可以为空    |     | 英文名|
+| conf_content| char|255| 可以为空    |     | 项目标语|
+| conf_order| int|11| 可以为空    |     | 排序|
+| conf_tips| char|255| 可以为空    |     | 备注|
+| conf_type| varchar|255| 可以为空    |     | 表单内标签类型|
+| conf_value| varchar|255| 可以为空    |     | 项目值|
+
+CREATE TABLE `webinfo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `conf_title` char(255)  COMMENT '标题',
+  `conf_name` char(255)  COMMENT '英文名',
+  `conf_content` char(255)  COMMENT '项目标语',
+  `conf_order` int(11)  COMMENT '排序',
+  `conf_tips` char(255)  COMMENT '备注',
+  `conf_type` varchar(255)  COMMENT '表单内标签类型',
+  `conf_value` varchar(255)  COMMENT '项目值',
+  PRIMARY KEY (`id`),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='网站信息表';
+
+
 ## 用户
 
 ###  用户表 ###
@@ -177,7 +203,7 @@ grammar_tableExtra: true
 |updated_at|int|11|N| |修改时间| |
 |created_at|int|11|N| |删除时间| |
 
-> ### 广告 ad
+### 广告 ad
 |名称|类型|长度|是否为空|索引|注释|备注|
 |-|-|-|-|-|-|-|
 |id|int|11|N|主键|列表页的ID| |
@@ -185,7 +211,7 @@ grammar_tableExtra: true
 |type|enum|11| | |广告的位置|1是首页左侧广告，2是内容页下面的广告,3是内容页右侧广告 |
 |content|Text|65535|N| |广告的内容代码| |
 
-> ### 单页面 single
+### 单页面 single
 |名称|类型|长度|是否为空|索引|注释|备注|
 |-|-|-|-|-|-|-|
 |id|int|11|N|主键|单页的ID| |

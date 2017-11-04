@@ -15,7 +15,19 @@
 	</fieldset>
 
 	<blockquote class="layui-elem-quote">
-		<form action="/user" method="get">
+		<form action="/user" class="layui-form" method="get">
+			{{--选择框--}}
+			<div class="layui-input-block" style="float:left;margin: 0px;width:150px;margin-right: 5px">
+				<select name="city" lay-verify="required">
+					<option value="">选择板块</option>
+					<option value="0">北京</option>
+					<option value="1">上海</option>
+					<option value="2">广州</option>
+					<option value="3">深圳</option>
+					<option value="4">杭州</option>
+				</select>
+			</div>
+			{{--选择框结束--}}
 			<div class="layui-input-inline">
 				<input type="text" name="username" lay-verify="required"  placeholder="请输入用户名" value="" autocomplete="off" class="layui-input">
 			</div>
@@ -80,10 +92,13 @@
                 layer.open({
                     type: 2,
                     title: '添加用户',
-                    shadeClose: true,
+                    shadeClose: false,
                     shade: 0.8,
+					anim:2,
+                    move: false,
+                    skin: 'layui-layer-molv',
                     area: ['700px', '500px'],
-                    content: 'mobile/' //iframe的url
+                    content: '/admin/user/create' //iframe的url
                 });
                 return false;
             })

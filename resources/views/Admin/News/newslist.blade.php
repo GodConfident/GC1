@@ -69,7 +69,7 @@
 		</table>
 	</div>
 
-		<script>
+<script>
 
             $('#tjyh').click(function(){
                 layui.use('layer', function(){
@@ -78,7 +78,7 @@
                         type: 1,
                         offset: '200px',
                         area: ['600px', '500'],
-                        title:'添加用户',
+                        title:'添加新闻',
                         move: false,
                         content: '<div style="padding: 20px;"><form action="/user/add"method="post"class="layui-form layui-form-pane"><div class="layui-form-item"><label class="layui-form-label">用户名</label><div class="layui-input-block">{{csrf_field()}}<input type="text"name="username"autocomplete="off"placeholder="请输入用户名"class="layui-input"></div></div><div class="layui-form-item"><label class="layui-form-label">电子邮件</label><div class="layui-input-block"><input type="email"name="email"autocomplete="off"class="layui-input"></div></div><div class="layui-form-item"><label class="layui-form-label">手机号码</label><div class="layui-input-block"><input type="phone"name="phone"autocomplete="off"class="layui-input"></div></div><div class="layui-form-item"><label class="layui-form-label">年龄</label><div class="layui-input-block"><input type="text"name="age"lautocomplete="off"class="layui-input"></div></div><div class="layui-form-item"><div class="layui-input-block"><button class="layui-btn"lay-submit=""lay-filter="formDemo">立即提交</button><button type="reset"class="layui-btn layui-btn-primary">重置</button></div></div></form></div>'
                     });

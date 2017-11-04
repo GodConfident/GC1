@@ -11,21 +11,24 @@ use App\Http\Model\newstypemodel;
 class NewsTypeController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 用无限极分类显示板块列表
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        // echo "newstype";
-        $data = newstypemodel::all();
-        // $data = $data ->get();
-        // dd($data);
-  //        foreach ($data as $k) {
-		//     echo $k->id." ";
-		//     echo $k->type." ";
-		//     echo $k->tstatus." <br>";
-		// }
+        //无限级分类
+
+        $data = newstypemodel::orderBy('path')->get();
+        foreach ($data as $k => $v) {
+            // $a = substr_count($v->path,'-').'<br>';
+            // 把 - 替换 为 ---|
+            $a = str_replace('-','---------|',$v->path);
+            //正则过滤 数字
+            $pattern  =  ' /\d+/';
+            $b = preg_replace($pattern,'', $a);
+            $v->type =  $b.$v->type;
+        }
         return view('Admin.News.news_type',compact('data'));
     }
 
@@ -36,7 +39,7 @@ class NewsTypeController extends Controller
      */
     public function create()
     {
-        //
+        echo 'abc';
     }
 
     /**
@@ -69,12 +72,10 @@ class NewsTypeController extends Controller
      */
     public function edit($id)
     {
-        $data =  newstypemodel::find($id);
-        // dd($data);
+        $data =  newstypemodel::orderBy('id')->find($id);
         // return view('admin.user.edit',['title'=>'用户修改','user'=>$user]);
         return view('/Admin.News.newstypeedit',compact('data'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -108,12 +109,12 @@ class NewsTypeController extends Controller
         $re = newstypemodel::find($id)->delete();
         if($re){
             $data=[
-                'status'=>0,
+                'status'=>1,
                 'msg'=>'删除成功'
             ];
         }else{
             $data=[
-                'status'=>1,
+                'status'=>2,
                 'msg'=>'删除失败'
             ];
         }

@@ -14,14 +14,22 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
-         return view('Admin.admin',['title'=>'后台首页']);
+         return view('Admin.admin');
     }
-    public function Content()
+    public function Content(Request $req)
     {
         // echo "string";
-        return view('Admin.Index.index',['title'=>'后台首页']);
+        return view('Admin.Index.index');
+    }
+    public function set(){
+        return view('Admin.Set.set');
+    }
+    public function sensitive(){
+        return view("Admin.Set.sensitive");
     }
     /**
      * public function index()

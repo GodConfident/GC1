@@ -3,3 +3,15 @@
 Homestead.yaml
 Homestead.json
 .env
+public
+resources
+/storage
+server.php
+/.*
+.idea
+.phpintel
+/storage
+composer.lock
+composer.json
+.uini
+.project

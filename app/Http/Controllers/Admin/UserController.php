@@ -16,9 +16,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('Admin.User.index',['title'=>'后台首页']);
     }
-
+    public function del(){
+        return view('Admin.User.del');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.User.add');
     }
 
     /**
