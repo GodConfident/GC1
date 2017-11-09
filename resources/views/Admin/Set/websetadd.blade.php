@@ -9,13 +9,13 @@
     <script src="/template/admin/layui/layui.js"></script>
 </head>
 <div style="margin-left: 60px">
-<!-- 示例-970 -->
+{{-- 示例-970 --}}
 <fieldset class="layui-elem-field layui-field-title" style="margin-top:50px">
   <legend>添加网站配置项</legend>
 </fieldset>
 <fieldset class="layui-elem-field layui-field-title" style="margin-top:50px">
             @if(session('msg'))
-                 <legend><h3 style="color:red">{{ session('msg') }}</h3></legend>
+                 <legend><h3 style="color:red;font-size: 30px">{{ session('msg') }}</h3></legend>
             @endif
 </fieldset>
     <form action="{{url('/admin/conf/')}}" class="layui-form layui-form-pane" method="post" style="width: 600px">
@@ -49,12 +49,10 @@
   <div class="layui-form-item">
     <label class="layui-form-label">类型</label>
     <div class="layui-input-block">
-      <input name="conf_type" title="input"  checked="" type="radio" value="input">
-      <input name="conf_type" title="textarea"  type="radio" value="textarea">
-      <input name="conf_type" title="radio" type="radio" value="radio">
+      <input lay-filter="type" name="conf_type" title="input"  checked type="radio" value="input">
+      <input lay-filter="type" name="conf_type" title="textarea"  type="radio" value="textarea">
     </div>
   </div>
-
         <div class="layui-form-item">
             <label class="layui-form-label">
                 项目标语
@@ -63,16 +61,6 @@
                 <input autocomplete="off" class="layui-input" name="conf_content" type="phone"/>
             </div>
         </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label">
-                项目值
-            </label>
-            <div class="layui-input-block">
-                <input class="layui-input" lautocomplete="off" name="conf_value" type="text"/>
-            </div>
-        </div>
-
   <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">备注</label>
     <div class="layui-input-block">
@@ -95,8 +83,25 @@
 <script>
 layui.use(['form', 'layedit', 'laydate'], function(){
   var form = layui.form
-  ,layer = layui.layer
+  ,layer = layui.layer;
+  //显示隐藏 项目值 的 input
+    form.on('radio(type)', function(data){
+        if (data.value == "radio") {
+            $("#conf_value").css('display','block')
+        }
+    });
+    form.on('input(type)', function(data){
+        if (data.value == "input") {
+            $("#conf_value").css('display','none')
+        }
+    });
+    form.on('textarea(type)', function(data){
+        if (data.value == "textarea") {
+            $("#conf_value").css('display','none')
+        }
+    });
 });
+
 </script>
 </body>
 </html>

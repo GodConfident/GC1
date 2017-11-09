@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Model\Config;
 use Illuminate\Http\Request;
+use DB;
 
 class ConfController extends Controller
 {
@@ -20,23 +21,13 @@ class ConfController extends Controller
         // dd($conf);
         foreach ($conf as $k => $v) {
             // dd($v);
-            //                    根据当前这条网站配置记录中的conf_tpyp的值来决定这条记录在前台列表中显示的样式
-            // if ($v->conf_order) {
-            //     $v['conf_order'] = '<div class="layui-form-item">  <input placeholder="' . $v->conf_order . '"  autocomplete="off" class="layui-input" name="conf_order" type="phone"/> </div>';
-            // }
             switch ($v->conf_type) {
-//                    此配置项如果是单选按钮,返回一个
-                //                    <input type="text" class="lg" name="conf_content[]" value="400-123-123">
                 case 'input':
-                    // dd($v->conf_content);
-                    // $v['_content'] = '<input type="text" class="lg" name="conf_content[]" value="' . $v->conf_content . '">';
-                    $v['conf_content'] = '<div class="layui-form-item">  <input  placeholder="' . $v->conf_content . '"  autocomplete="off" class="layui-input" name="conf_content[]" type="phone"/> </div>';
+                    $v['conf_content'] = '<input  value="' . $v->conf_content . '"  autocomplete="off" class="layui-input" name="'.$v->id.'" type="input" />';
                     break;
-                //    此配置项如果是文本框类型，返回
-                //                    <textarea type="text" class="lg" name="conf_content[]"></textarea>
                 case 'textarea':
-                    // $v['conf_content'] = '<textarea type="text" class="lg" name="conf_content[]">' . $v->conf_content . '</textarea>';
-                    $v['conf_content'] = '  <div class="layui-form-item layui-form-text"><textarea placeholder="' . $v->conf_content . '" class="layui-textarea" name="conf_content[]"></textarea></div>';
+                // dd($v->conf_content);
+                    $v['conf_content'] = '<textarea  placeholder="' . $v->conf_content . '" class="layui-textarea" name="'.$v->id.'">' . $v->conf_content . '</textarea>';
                     break;
                 //  此配置项如果是单选按钮类型，返回
                 //  1|开启,0|关闭 =======>
@@ -45,20 +36,19 @@ class ConfController extends Controller
                 //                  <input type="radio" name="conf_content[]" value="1">开启
                 //                  <input type="radio" name="conf_content[]" value="0">关闭
                 case 'radio':
-//                  $v->field_value
                     $arr = explode(',', $v->conf_value);
-                    // dd($arr);
-                    //                定义一个变量来接收格式化后的数据
                     $str = '';
+                    // dd($v);
                     foreach ($arr as $m => $n) {
                         $r = explode('|', $n);
+                        // dd($n);
                         // 判断此次变量的这个元素是否应该被选中
-                        $c = ($v->conf_content == $r[0]) ? 'layui-form-radioed' : '';
-                        // dd($r);
-                        // $str.='<div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><span>input</span></div>';
-                        // $str .= '<div class="layui-unselect layui-form-radio' . $c . '"><i class="layui-anim layui-icon"></i><span>' . $r[1] . '</span></div>';
-                        $str .= '<input  type="radio"   name="conf_content[]" value="' . $r[0] . '">' . $r[1] . '&nbsp;';
-                        // $str .= ' <input  type="radio"   name="conf_content[]" value="' . $r[0] . '">' . $r[1] . '&nbsp;';
+                        // dd($v->conf_content);
+                        // dd($v->id);
+                        $c = ($v->conf_content == $r[0]) ? 'checked' : '';
+                        // dd($c);
+                        // dd($r);//1|开启,2|关闭
+                          $str .= '<input type="radio" name="'.$v->id.'" value="' . $r[0] . '" title="' . $r[1] . '" '.$c.' lay-filter="confradio" > &nbsp;<input class="weboff" type="hidden" value='.$v->id.'>';
                     }
                     $v['conf_content'] = $str;
                     break;
@@ -73,8 +63,64 @@ class ConfController extends Controller
  */
     public function webchange(Request $request)
     {
-               $input = $request->all();
-                dd($input);
+        $input = $request->except('_token','conf_order');
+        $a = 0;
+        foreach ($input as $ka => $va) {
+            // dd($va);
+            $conf_contentadd = DB::table('webinfo')->where('id',$ka)->update(['conf_content'=>$va ]);
+            // dd($conf_contentadd);
+            if($conf_contentadd){
+                $a++;
+            }else{
+                $a--;
+            }
+        }
+            if($a >= -5){
+                $msg = "修改成功！";
+            }else{
+                $msg = "修改失败！";
+            }
+            // dd($a);
+// 模型排序
+        $conf = Config::orderBy('conf_order')->get();
+        // dd($conf);
+        foreach ($conf as $k => $v) {
+            // dd($v);
+            switch ($v->conf_type) {
+                case 'input':
+                    $v['conf_content'] = '<input  value="' . $v->conf_content . '"  autocomplete="off" class="layui-input" name="'.$v->id.'" type="input" />';
+                    break;
+                case 'textarea':
+                // dd($v->conf_content);
+                    $v['conf_content'] = '<textarea  placeholder="' . $v->conf_content . '" class="layui-textarea" name="'.$v->id.'">' . $v->conf_content . '</textarea>';
+                    break;
+                //  此配置项如果是单选按钮类型，返回
+                //  1|开启,0|关闭 =======>
+                //                    0 => "1|开启"  ===>   0=>1,1=>开启
+                //                    1 => "0|关闭"
+                //                  <input type="radio" name="conf_content[]" value="1">开启
+                //                  <input type="radio" name="conf_content[]" value="0">关闭
+                case 'radio':
+                    $arr = explode(',', $v->conf_value);
+                    $str = '';
+                    // dd($v);
+                    foreach ($arr as $m => $n) {
+                        $r = explode('|', $n);
+                        // dd($n);
+                        // 判断此次变量的这个元素是否应该被选中
+                        // dd($v->conf_content);
+                        // dd($v->id);
+                        $c = ($v->conf_content == $r[0]) ? 'checked' : '';
+                        // dd($c);
+                        // dd($r);//1|开启,2|关闭
+                          $str .= '<input type="radio" name="'.$v->id.'" value="' . $r[0] . '" title="' . $r[1] . '" '.$c.' lay-filter="confradio" > &nbsp;<input class="weboff" type="hidden" value='.$v->id.'>';
+                    }
+                    $v['conf_content'] = $str;
+                    break;
+            }
+        }
+        // dd($conf);
+        return view('Admin.Set.set', compact('conf','msg'));
     }
     /**
      * 返回添加网站配置页
@@ -92,14 +138,13 @@ class ConfController extends Controller
      */
     public function create()
     {
-        // echo "create";
         dd($_GET);
         $conf = Config::all();
         // return view('Admin.Set.set');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 添加网站配置
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -110,37 +155,42 @@ class ConfController extends Controller
         // dd($input);
         $conf = new Config;
         $re   = Config::create($input);
-        // dd($_POST);
-        // $conf->conf_title = $_POST['conf_title'];
-        // $conf->conf_name = $_POST['conf_name'];
-        // $conf->conf_content = $_POST['conf_content'];
-        // $conf->conf_value = $_POST['conf_value'];
-        // $conf->conf_tips = $_POST['conf_tips'];
-        // $conf->conf_order = $_POST['conf_order'];
-        // $conf->conf_type = $_POST['conf_type'];
-        // $yes = $conf->save();
         if ($re) {
             //成功 调回列表页
-            return redirect("admin/conf");
+            return redirect("admin/conf")->with('msg','添加成功！');
         } else {
             //失败 返回添加页面
-            return back()->with('msg', '添加失败');
+            return back()->with('msg', '添加失败！');
         }
     }
 
     /**
-     * Display the specified resource.
+     * 网站开关
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $data = Config::find($id);
+        $res = $data->conf_content;
+        if ($res == 1) {
+            $data ->conf_content = 2;
+            $s = $data->save();
+            if ($s) {
+                return 2;
+            }
+        }else{
+            $data ->conf_content = 1;
+            $s = $data->save();
+            if ($s) {
+                return 1;
+            }
+        }
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * 编辑网站配置重新排序
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -178,13 +228,21 @@ class ConfController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 删除
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        // return $id;
+        $res = DB::table('webinfo')->where('id','=',$id)->delete();
+        // $del = new Config;
+        // $res = $del ->where('id','=',$id) -> delete();
+        if ($res) {
+            return 1;
+        }else{
+            return 2;
+        }
     }
 }

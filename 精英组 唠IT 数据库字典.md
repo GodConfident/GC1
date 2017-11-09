@@ -30,7 +30,7 @@ grammar_cjkRuby: true
 grammar_center: true
 grammar_align: true
 grammar_tableExtra: true
---- 
+---
 ## 网站信息表
 
 | 名称 | 类型| 长度 | 是否为空 | 索引  | 备注 |
@@ -101,10 +101,28 @@ CREATE TABLE `webinfo` (
 |  ----   |  ---- |  ---- |--------------|--------|-------|-------- |
 |   id    |  int  | 11   |      N        |          |        |  a_i    |
 |  type | varchar |  50  |   N   |  UN  |  新闻类型    |    |
+
 |  tstatus | char |100    |   N   |  UN  |  新闻状态    |   0 为顶级模块 1为一级模块  |
 | created_at | int | 11 |  |  |  添加时间  | |
 | updated_at | int | 11 |   |  | 修改时间 | |
 | deleted_at | int | 11 |  |  |  删除时间  | |
+|  tstatus | char |100    |   N   |  UN  |  新闻状态    |   1为显示 2为隐藏  |
+	CREATE TABLE `category` (
+	  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+	  `type` varchar(255) DEFAULT NULL,
+	  `bpath` varchar(255) DEFAULT NULL,
+	  `tstatus` char(100) DEFAULT NULL,
+	  `pid` int(11) DEFAULT NULL,
+	  PRIMARY KEY (`id`)
+	) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8
+
+- 后台新闻板块判断
+	<!-- - 板块显示隐藏 出错判断 -->
+	<!-- - 子板块层级限制 -->
+	<!-- - 二级板块数量限制		限制为10个 -->
+	<!-- - 板块名不能为空 -->
+	- 二级和三级板块数量限制		依据导航栏长度限制 在显示隐藏处限制
+	<!-- - 有子级板块的 不给显示 状态和删除 按钮 -->
 
 ### news 新闻表 ###
 
@@ -112,7 +130,7 @@ CREATE TABLE `webinfo` (
 |  ----   |  ---- |  ---- |--------------|--------|-------|-------- |
 |   id    |  int  | 11   |      N        |          |        |  a_i    |
 |  title  |  varchar | 60  |  N  | 普通  | 新闻标题 |  |
-| content| text  | 65535 | N |  | 新闻内容 | | 
+| content| text  | 65535 | N |  | 新闻内容 | |
 | img | varchar  | 300  |  |   |  多个图片间用逗号隔开  | |
 | tid | int |  11  |  N  |  普通  |  新闻类型的id  | |
 | nstatus | tinyint | 1 | N  |   | 状态 1: 展示 0:不展示 | 默认:0|
@@ -120,6 +138,10 @@ CREATE TABLE `webinfo` (
 | created_at  | timestamp | 0 |  |  | 添加时间  | |
 | updated_at | timestamp | 0 |  |  |  修改时间 |  |
 | deleted_at  | timestamp  | 0 |  |  | 删除时间 | |
+
+- 后台新闻列表判断
+	- 新闻只能发在三级板块
+
 
 ### news_data 新闻详情表 ###
 
@@ -144,6 +166,29 @@ CREATE TABLE `webinfo` (
 | content|text |65535 | N |  | 回复内容 |  |
 | created_at  | timestamp | 0 |  |  | 添加时间  | |
 | updated_at | timestamp | 0 |  |  |  修改时间 | |
+
+### software 软件管理表  ###
+
+| 名称 | 类型| 长度 | 是否为空 | 索引 | 注释 | 备注 |
+|  ----   |  ---- |  ---- |--------------|--------|-------|-------- |
+|  sid    |  int  | 11   |      N        |          |        |  a_i    |
+| uid  | int  |  11 |  N |  普通  | 评论发表人id |  |
+| nid  | int  |  11  | N |  普通  |  新闻id  |    |
+| status | tinyint | 1 | N  |   | 状态 1: 展示 0:不展示 | 默认:0|
+| content|text |65535 | N |  | 回复内容 |  |
+| created_at  | timestamp | 0 |  |  | 添加时间  | |
+| updated_at | timestamp | 0 |  |  |  修改时间 | |
+	CREATE TABLE `software` (
+	 `sid` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+	 `stitle` char(255)  COMMENT '软件标题',
+	 `src` char(255)  COMMENT '软件路径',
+	 `scontent` char(255)  COMMENT '软件介绍',
+	 `uid` int(11)  COMMENT '关联上传用户id',
+	 `snum` int(11)  COMMENT '下载次数',
+	 `created_at` timestamp NULL DEFAULT '0000-00-00 00:00:00',
+	 `updated_at` timestamp NULL DEFAULT '0000-00-00 00:00:00',
+	 PRIMARY KEY (`id`)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='软件管理表'
 
 ## 全局设置
 

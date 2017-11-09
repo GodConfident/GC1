@@ -5,7 +5,10 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="/template/admin/layui/css/layui.css">
 	<link rel="stylesheet" href="/template/admin/fonts/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.min.css">
+	<script src="/template/admin/jquery-1.8.3.min.js"></script>
 	<script src="/template/admin/layui/layui.js"></script>
+	<script src="/template/admin/jquery-1.8.3.min.js"></script>
 </head>
 <body style="padding: 10px;">
 <div class="user">
@@ -14,9 +17,9 @@
 	</fieldset>
 
 	<blockquote class="layui-elem-quote">
-		<form action="/user" method="get">
+		<form action="/admin/user/del" method="get">
 			<div class="layui-input-inline">
-				<input type="text" name="username" lay-verify="required"  placeholder="请输入用户名" value="" autocomplete="off" class="layui-input">
+				<input type="text" name="search" lay-verify="required"  placeholder="请输入用户名" value="{{$search}}" autocomplete="off" class="layui-input">
 			</div>
 			<button class="layui-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
 		</form>
@@ -45,20 +48,69 @@
 			</tr>
 			</thead>
 			<tbody>
+				@foreach ($users as $user)
 				<tr>
-					<td>18</td>
-					<td>username</td>
-					<td>较长的用户名</td>
-					<td><span class="layui-badge-rim layui-bg-green">正常</span></td>
-					<td>2017-02-30 15:23</td>
-					<td></td>
+					<td>{{ $user['id'] }}</td>
+					<td>{{ $user['username'] }}</td>
+					<td>{{ $user['userinfo']['nickname'] }}</td>
+					<td><span class="layui-badge-rim layui-bg-green">{{ $user['status']==2?'冻结':'正常' }}</span></td>
+					<td>{{ $user->created_at->format('Y-m-d H:i:s') }}</td>
+					<td>{{ date('Y-m-d H:i:s',$user->deleted_at) }}</td>
 					<td>
-						<a class="layui-btn layui-btn-mini layui-btn-normal" href="/user/edit/" ><i class="fa fa-mail-reply"></i> 恢复用户</a>
-						<a class="layui-btn layui-btn-mini layui-btn-danger" href="/user/del/"><i class="fa fa-trash"></i> 彻底删除</a>
+						<a id="recover" class="layui-btn layui-btn-mini layui-btn-normal" onclick="recover(this,{{ $user['id'] }})" href="javascript:;" ><i class="fa fa-mail-reply"></i> 恢复用户</a>
+						<a class="layui-btn layui-btn-mini layui-btn-danger" href="javascript:;" onclick="del(this,{{$user['id']}})"><i class="fa fa-trash"></i> 彻底删除</a>
 					</td>
+				</tr>
+				@endforeach
 			</tbody>
 		</table>
+		{!! $users->appends(['search'=>$search])->render() !!}
 	</div>
+		<script type="text/javascript">
+			function recover(obj,id){
+				layui.use('layer', function(){
+					var layer = layui.layer;
+	            	layer.confirm('确认删除吗？',{},function(){
+	            		$.ajax({
+		            		url:"{{ url('/user/recover') }}/"+id,
+		            		type:"get",
+		            		data:{"id":id},
+		            		success:function(m){
+		            			if(m==1){
+		            				layer.msg('已恢复')
+	    							$(obj).parents('tr').first().remove()
+		            			}else{
+		            				layer.msg('操作失败')
+		            			}
+		            		}
+		            		
+	            		})
+	            	},function(){})
+            	})
+			}
+
+			function del(obj,id){
+				layui.use('layer', function(){
+					var layer = layui.layer;
+	            	layer.confirm('确认删除吗？',{},function(){
+	            		$.ajax({
+		            		url:"{{ url('/admin/user/') }}/"+id,
+		            		type:"post",
+		            		data:{"_method":"delete","_token":"{{ csrf_token() }}"},
+		            		success:function(m){
+	    						if(m==1){
+	    							layer.msg('删除成功')
+	    							$(obj).parents('tr').first().remove()
+	    						}else{
+	    							layer.msg('删除失败')
+	    						}
+		    					
+	            			}
+	            		})
+	            	},function(){})
+            	})
+            }
+		</script>
 
 		<script>
 

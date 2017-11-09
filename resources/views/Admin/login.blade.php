@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>{{$title}}</title>
     <link rel="stylesheet" href="/template/admin/layui/css/layui.css">
-    <link rel="stylesheet" href="/template/admin/fonts/css/font-awesome.min.css">
+      <link rel="stylesheet" href="/template/admin/fonts/css/font-awesome.min.css">
     <style>
         body{background: #eee;}
         .login{width: 350px;height: 340px;background: #fff;border: 1px solid #CCC;margin: 0 auto;margin-top: 5vh;box-shadow: 3px 3px 30px #666;border-radius: 10px}
@@ -15,6 +15,7 @@
 </head>
 <body>
 <p class="title">唠IT后台管理系统</p>
+    
 <div class="login">
     <p class="title_dl">登　陆</p>
     <hr class="layui-bg-gray">
@@ -45,13 +46,13 @@
     </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="/template/admin/layui/layui.js"></script>
+<script src="{{asset('/template/admin/layui/layui.js')}}"></script>
 <script type="text/javascript">
     layui.use('layer', function(){
      var layer = layui.layer;
           @if (count($errors) > 0)
                 @if ( is_object($errors) !='object')
-                    // layer.msg("{{$errors}}", {offset:'150px'});
+                    layer.msg("{{$errors}}", {offset:'150px'});
                 @else
                 var error='';
                     @foreach ($errors->all() as $error)
@@ -93,5 +94,7 @@
         }
     })
 </script>
+
+
 </body>
 </html>

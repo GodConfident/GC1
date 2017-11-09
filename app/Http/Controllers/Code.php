@@ -40,7 +40,8 @@ class Code extends Controller
             imagettftext($img,35,rand(-40,40),$i*40+rand(15,20),35,$color,'./font/simkai.ttf',$c=$str[rand(0,$l)]);
             $code.=$c;
         }
-        session(['code'=>$code]);
+
+        session(['code'=>strtolower($code)]);
         imagejpeg($img);
         imagedestroy($img);
     }

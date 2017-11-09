@@ -21,7 +21,6 @@ class LoginController extends Controller
 
         $this->validate($req,[
             'username'=>'required|regex:/\w{6,18}/',
-            'password'=>'required|regex:/\w{6,18}/',
         ],[
             'username.required'=>'用户名不能为空',
             'username.regex'=>'用户名格式不正确',
@@ -30,7 +29,7 @@ class LoginController extends Controller
         ]);
         // 判断验证码是否一致
         $code=$req->input('check');
-        if( strtolower($code) != strtolower(session()->pull('code')) ){
+        if( strtolower($code) != session()->pull('code') ){
             return back()->withInput();
         }
 
@@ -41,9 +40,19 @@ class LoginController extends Controller
         $res=User::where('username','=',$username)->orWhere('email','=',$username)->first();
         $flag=false; // 记录用户名与密码是否错误
         if($res){
-            //验证密码 Hash::check()
-            if(!Hash::check($password,$res->password)){
-                $flag=true;
+
+            //验证状态
+            if($res->status==0){
+                session(['user'=>$res]);
+                return redirect('/admin/activation');
+            }elseif($res->status==2){
+                return back()->withInput()->with('errors','账户已冻结');
+            }else{
+                //验证密码 Hash::check()
+                if(!Hash::check($password,$res->password)){
+                    $flag=true;
+                }
+
             }
         }else{
             $flag=true;
@@ -61,7 +70,8 @@ class LoginController extends Controller
     public function postCheck(Request $req)
     {
         $code=$req->input('code');
-        if(strtolower($code)==strtolower(session('code'))){
+        if(strtolower($code)==session('code')){
+
             return 1;
         }else{
             return 0;

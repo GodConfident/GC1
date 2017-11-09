@@ -22,8 +22,19 @@ class IndexController extends Controller
     }
     public function Content(Request $req)
     {
-        // echo "string";
-        return view('Admin.Index.index');
+        $server['os']= php_uname();
+        $server['phpv']= PHP_VERSION;
+        $server['HTTP_Server']= $_SERVER['SERVER_SOFTWARE'];
+        $server['Server_Language']= $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+        $server['time']= date('Y-m-d H:i:s');
+        $server['Server_time']= $_SERVER['DOCUMENT_ROOT'];
+        $server['Server_cpky']= round(disk_free_space('/')/1024/1024/1024,2);
+        $server['Server_cpkj']= round(disk_total_space('/')/1024/1024/1024,2);
+        $server['Server_ip']= $_SERVER["SERVER_ADDR"].':'.$_SERVER['SERVER_PORT'];
+        $server['Server_name']=$_SERVER['SERVER_NAME'];
+        $server['POST']=ini_get('post_max_size');
+        $server['upload']=ini_get('upload_max_filesize');
+        return view('Admin.Index.index',['Server'=>$server]);
     }
     public function set(){
         return view('Admin.Set.set');

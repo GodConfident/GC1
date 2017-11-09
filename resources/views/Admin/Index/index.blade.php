@@ -68,29 +68,37 @@
 	    <col width="150px">
 	    <col>
 	  </colgroup>
-	  <tbody>
-	    <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>PHP</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	    <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	   <tr>
-	      <td>服务器系统</td><td>Linux Cent OS 6.8 x86</td>
-	    </tr>
-	  </tbody>
+			<tbody>
+			<tr>
+				<td>服务器系统</td><td colspan="3">{{$Server['os']}}</td>
+			</tr>
+			<tr>
+				<td width="20%">服务器支持语言</td><td colspan="3">{{$Server['Server_Language']}}</td>
+			</tr>
+            <tr>
+                <td width="20%">PHP版本</td><td width="30%">{{$Server['phpv']}}</td>
+                <td width="20%">解析器</td><td>{{$Server['HTTP_Server']}}</td>
+            </tr>
+			<tr>
+				<td>服务器时间</td><td colspan="3">{{$Server['time']}}</td>
+			</tr>
+			<tr>
+				<td>服务器地址</td><td colspan="3">{{$Server['Server_name']}}</td>
+			</tr>
+			<tr>
+				<td>服务器IP</td><td colspan="3">{{$Server['Server_ip']}}</td>
+			</tr>
+			<tr>
+				<td width="20%">POST最大限制</td><td width="30%">{{$Server['POST']}}</td>
+				<td width="20%">服务器空间</td><td width="30%" style="font-size:12px;color: #393d49;">{{$Server['Server_cpkj']-$Server['Server_cpky']}}GB / {{$Server['Server_cpky']}}GB / {{$Server['Server_cpkj']}}GB
+					<div class="layui-progress">
+						<div class="layui-progress-bar layui-bg-blue" lay-percent="{{($Server['Server_cpkj']-$Server['Server_cpky'])/($Server['Server_cpkj'])*100}}%"></div>
+					</div>
+				</td>
+			</tr>
+
+
+			</tbody>
 	</table>
 	</div>
 
@@ -223,5 +231,11 @@
 </div>
 </div>
 <p>　</p>
+<script>
+    //注意进度条依赖 element 模块，否则无法进行正常渲染和功能性操作
+    layui.use('element', function(){
+        var element = layui.element;
+    });
+</script>
 </body>
 </html>
