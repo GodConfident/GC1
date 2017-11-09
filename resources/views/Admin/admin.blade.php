@@ -38,12 +38,22 @@
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">新闻管理</a>
           <dl class="layui-nav-child">
+            <dd><a href="/admin/user" target="content">用户列表</a></dd>
+            <dd><a href="/admin/del" target="content">回收站</a></dd>
+          </dl>
+        </li>
+        {{--新闻列表--}}
+<!--         <li class="layui-nav-item">
+          <a class="" href="/admin/newstype"  target="content">新闻模块</a>
+          <dl class="layui-nav-child">
+            <dd><a  href="/admin/newstype"  target="content">新闻版块</a></dd>
             <dd><a href="/admin/news" target="content">新闻列表</a></dd>
             <dd><a href="javascript:;">添加新闻</a></dd>
             <dd><a href="/admin/newstype " target="content">新闻版块</a></dd>
             <dd><a href="javascript:;">回收站</a></dd>
           </dl>
-        </li>
+        </li> -->
+
         <li class="layui-nav-item">
           <a class="" href="javascript:;">用户管理</a>
           <dl class="layui-nav-child">
@@ -59,11 +69,9 @@
             <dd><a href="/admin/index/sensitive" target="content">敏感词设置</a></dd>
           </dl>
         </li>
-
       </ul>
     </div>
   </div>
-  
   <div class="layui-body" style="">
     <!-- 内容主体区域 -->
     <!-- section('content') -->
@@ -79,7 +87,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="layui-footer">
     <!-- 底部固定区域 -->
   </div>

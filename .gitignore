@@ -3,8 +3,6 @@
 Homestead.yaml
 Homestead.json
 .env
-public
-resources
 /storage
 server.php
 /.*

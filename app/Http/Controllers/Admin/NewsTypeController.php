@@ -39,7 +39,6 @@ class NewsTypeController extends Controller
      */
     public function create()
     {
-        echo 'abc';
     }
 
     /**

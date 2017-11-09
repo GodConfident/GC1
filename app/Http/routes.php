@@ -31,7 +31,6 @@ Route::get('/admin/user', 'Admin\UserController@User');
 
 //后台 新闻版块 路由
 Route::resource('/admin/newstype', 'Admin\NewsTypeController');
-
 //后台验证码
 Route::get('/code','Code@index');
 

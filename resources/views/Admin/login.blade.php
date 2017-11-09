@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>{{$title}}</title>
     <link rel="stylesheet" href="/template/admin/layui/css/layui.css">
-      <link rel="stylesheet" href="/template/admin/fonts/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/template/admin/fonts/css/font-awesome.min.css">
     <style>
         body{background: #eee;}
         .login{width: 350px;height: 340px;background: #fff;border: 1px solid #CCC;margin: 0 auto;margin-top: 5vh;box-shadow: 3px 3px 30px #666;border-radius: 10px}
@@ -15,7 +15,6 @@
 </head>
 <body>
 <p class="title">唠IT后台管理系统</p>
-    
 <div class="login">
     <p class="title_dl">登　陆</p>
     <hr class="layui-bg-gray">
@@ -94,7 +93,5 @@
         }
     })
 </script>
-
-
 </body>
 </html>
