@@ -1,4 +1,3 @@
-
 <!-- 首页 尾部 -->
 @extends('Home.footer')
 
@@ -240,45 +239,27 @@
     <div class="rt">
         <div class="focus_area">
 
-
-
-
-
-
 <!-- 焦点关注新闻 -->
             <div class="focus">
                 <div class="block-title">
                     焦点关注
                 </div>
                 <ul>
+                    @foreach ($focus as $focus1)
                     <li>
-                        <a href="https://www.ithome.com/html/it/331349.htm" style="border: 0px none;" target="_blank">
-                            <img alt="11月起，旅客可用微信支付购买火车票" src="imgs/6844fdec-f2a2-4969-9882-10a890c6af5e.jpg">
-                            </img>
+                        <a href="#" style="border: 0px none;" target="_blank">
+                            <img alt="11月起，旅客可用微信支付购买火车票" src="{{$focus1['img']}}">
                         </a>
                         <h2 class="focus-title">
-                            <a href="https://www.ithome.com/html/it/331349.htm" target="_blank">
-                                11月起，旅客可用微信支付购买火车票
+                            <a href="#" target="_blank">
+                                {{$focus1['title']}}
                             </a>
                         </h2>
                         <p>
-                            铁路部门计划将于11月份陆续推出互联网、车站窗口及ATM自助售票机购票微信支付功能
+                            {!!$focus1['content']!!}
                         </p>
                     </li>
-                    <li>
-                        <a href="https://www.ithome.com/html/it/331157.htm" style="border: 0px none;" target="_blank">
-                            <img alt="特斯拉重申将在华建厂" src="imgs/66ea1faf-25a6-4abe-be9f-a7e71989b429.jpg">
-                            </img>
-                        </a>
-                        <h2 class="focus-title">
-                            <a href="https://www.ithome.com/html/it/331157.htm" target="_blank">
-                                特斯拉重申将在华建厂
-                            </a>
-                        </h2>
-                        <p>
-                            计划在上海建设一座工厂，并有望在年底达成协议。
-                        </p>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
 <!-- 焦点关注新闻  end-->
@@ -578,17 +559,6 @@
                         </a>
                         <a href="javascript:void(0)">
                             5
-                        </a>
-                    </span>
-                    <span class="all_news">
-                        <a class="date_list" href="https://www.ithome.com/blog/">
-                            博客版
-                        </a>
-                        <span class="v">
-                            |
-                        </span>
-                        <a class="date_list" href="https://www.ithome.com/list/">
-                            新闻日历...
                         </a>
                     </span>
                 </div>

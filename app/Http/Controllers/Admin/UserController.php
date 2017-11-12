@@ -38,7 +38,7 @@ class UserController extends Controller
             ->where('deleted_at','=',null)
             ->where($search,'like','%'.$keywords.'%')
             ->orderBy('user.id','desc')
-            ->paginate(10);            
+            ->paginate(10);
         }
         $status=['未激活','正常','冻结'];
         $page=$req->input('page','1');
@@ -59,7 +59,7 @@ class UserController extends Controller
 
         return view('Admin.User.del',compact('users','search'));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -98,7 +98,7 @@ class UserController extends Controller
         $userinfo=new UserInfo();
         $userinfo->sex=$sex;
         $res2=$userinfo->save();
-        
+
         if($res1){
             return back()->with('errors','用户添加成功');
         }
@@ -164,7 +164,7 @@ class UserController extends Controller
         return 1;
     }
     public function checkUsername(Request $req)
-    {   
+    {
         $username=$req->input('username');
         $res=User::where('username','=',$username)->get();
 

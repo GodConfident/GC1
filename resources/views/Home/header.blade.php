@@ -1,4 +1,3 @@
-
                     <!-- tb-nav End -->
                 </div>
             </div>
@@ -46,51 +45,18 @@
                     </p>
                 </div>
             </div>
-            <div class="clearfix" id="top5">
-                <a href="https://www.ithome.com/" id="logo" style="border: 0px none;">
-                    <img alt="唠IT" src="imgs/ithome.png">
+<style type="text/css">
+/*    #top5 #logo {
+        height: 80px;
+    }*/
+</style>
+            <div class="col" id="top5">
+                <a href="{{url('home/index')}}" id="logo" style="border: 0px none;">
+                    <img alt="唠IT" src="{{ asset('template/home/imgs/ithome.png') }}">
                     </img>
                 </a>
-                <div class="col">
-                    <a href="http://it.ithome.com/">
-                        业界资讯
-                    </a>
-                    <a href="http://soft.ithome.com/">
-                        软件之家
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="http://win10.ithome.com/">
-                        Win10之家
-                    </a>
-                    <a href="http://wp.ithome.com/">
-                        WP之家
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="http://iphone.ithome.com/">
-                        iPhone之家
-                    </a>
-                    <a href="http://ipad.ithome.com/">
-                        iPad之家
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="http://android.ithome.com/">
-                        安卓之家
-                    </a>
-                    <a href="http://digi.ithome.com/">
-                        数码之家
-                    </a>
-                </div>
-                <div class="col last">
-                    <a href="http://digi.ithome.com/labs/">
-                        评测中心
-                    </a>
-                    <a href="http://next.ithome.com/">
-                        智能设备
-                    </a>
-                </div>
+            {{-- 首页板块列表 --}}
+            {!!$string!!}
                 <!-- 搜索 -->
                 <div class="sc">
                     <form action="//dyn.ithome.com/search" target="_blank">

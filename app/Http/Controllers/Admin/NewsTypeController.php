@@ -19,27 +19,29 @@ class NewsTypeController extends Controller
         $data = DB::select('select type_id,type,bpath,pid,tstatus,concat(bpath,"-",type_id) as bpath from category order by bpath');
         // dd($data);
             foreach ($data as $k => $v) {
+
             //处理bpath字段
             $v['bpath']       = preg_replace('/\d+/', '', str_replace('-', '|---------', $v['bpath'])) . $v['type'];
             $data[$k]['type'] = substr($v['bpath'], 10);
             //处理板块状态
-            //有子版块的不给显示 状态按钮 和删除按钮
             foreach ($data as $ks => $vs) {
                 $arrpid[] = $vs['pid'];
             }
+
             //去除重复的值
             $arrpid = array_unique($arrpid);
             //如果type_id有对应的pid 则隐藏 删除按钮和隐藏按钮
             $ifbnt = in_array($v['type_id'], $arrpid);
-            if(!$ifbnt){
                 if ($v['tstatus'] == 1) {
                     $data[$k]['tstatus'] = '<a class="layui-btn layui-btn-mini layui-btn-warm" onclick="bshow(' . $v['type_id'] . ')"' . $v['type_id'] . '/edit/" > 隐藏板块</a>';
                 } else {
                     $data[$k]['tstatus'] = '<a class="layui-btn layui-btn-mini layui-btn-normal" onclick="bshow(' . $v['type_id'] . ')"' . $v['type_id'] . '/edit/" > 显示板块</a>';
                 }
+
+            //有子版块的不给显示 删除按钮
+            if(!$ifbnt){
                 $data[$k]['bdel'] = '<button class="layui-btn layui-btn-mini layui-btn-danger" onclick="tdel('.$v['type_id'].')" ><i class="layui-icon">&#xe640;</i> 删除</button>';
             }else{
-                $data[$k]['tstatus'] = '';
                 $data[$k]['bdel'] = '';
             }
         }
@@ -104,11 +106,11 @@ class NewsTypeController extends Controller
         }
 
         // dd($data[0]->type_id);
-        //限制子级板块数量
+        //限制二级板块数量
         $cdata = newstypemodel::where('pid','=',$data[0]->type_id)->get();
         foreach ($cdata as $k => $v) {
             if($k>=9){
-                return back()->with('errors','子级板块不能多于10个！');
+                return back()->with('errors','二级板块不能多于10个！');
             }
         }
         $add['bpath']   = $data->bpath   = $data[0]->bpath . '-' . $input['interest'];
@@ -143,7 +145,7 @@ class NewsTypeController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * 板块修改页面
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -154,7 +156,7 @@ class NewsTypeController extends Controller
         return view('/Admin.News.newstypeedit', compact('data'));
     }
     /**
-     * Update 板块修改
+     * Update 板块修改ing
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -178,7 +180,7 @@ class NewsTypeController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 板块删除方法
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

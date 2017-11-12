@@ -6,26 +6,26 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+// use App\Http\Model\newstypemodel;
 use DB;
-
-class NewsControllers extends Controller
+class IndexController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 首页
      *
      * @return \Illuminate\Http\Response
      */
-    public function news($name)
+    public function getIndex()
     {
-        //查询一级级板块名
+    	//查询一级级板块名
         $newstype = DB::table('category')->where('pid',48)->where('tstatus',1)->select('type','path1')->get();
         $string = '';
         for($n=count($newstype),$i=0;$i<$n;$i++){
             if($i%2){continue;}
             if($newstype[$i+1]['type']){
                 $string .= '<div class="col">
-                            <a href="'. $newstype[$i]['path1'].'">'. $newstype[$i]['type'].'</a>
-                            <a href="'. $newstype[$i+1]['path1'].'">'. $newstype[$i+1]['type'].'</a>
+                            <a href="news/'. $newstype[$i]['path1'].'">'. $newstype[$i]['type'].'</a>
+                            <a href="news/'. $newstype[$i+1]['path1'].'">'. $newstype[$i+1]['type'].'</a>
                         </div>';
             }else{
                 $string .= '<div class="col">
@@ -34,10 +34,13 @@ class NewsControllers extends Controller
             }
         }
 
-        //查询新闻
-        $news = DB::table('news')->paginate(15);
-        // dd($news);
-        return view('Home.News.news',compact('string','news'));
+        //焦点关注
+        $focus = DB::table('news')->where('tid',57)->paginate(2);
+        // dd($focus);
+        // foreach ($focus as $key => $value) {
+        //     dd($value);
+        // }
+        return view('Home.index',compact('string','focus'));
     }
 
     /**

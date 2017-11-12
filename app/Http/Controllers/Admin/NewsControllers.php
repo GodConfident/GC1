@@ -17,7 +17,7 @@ class NewsControllers extends Controller
      */
     public function index(Request $request)
     {
-                // 接受值
+        // 接受值
         $count = $request -> input('count',9);
         $search = $request -> input('search','');
         $req = $request -> all();
@@ -89,7 +89,15 @@ class NewsControllers extends Controller
         $arr['nstatus'] = 1;
         $res            = newsmodel::insert($arr);
         if ($res) {
-            return self::index();
+            // 接受值
+            $count = $request -> input('count',9);
+            $search = $request -> input('search','');
+            $req = $request -> all();
+            //构造器两表关联查询+分页
+            $data = DB::table('news')->join('category', 'news.tid', '=', 'category.type_id')->where('title','like','%'.trim($search).'%')->paginate(9);
+            // $data = self::indexcode();
+            // dd($data);
+            return view('Admin.News.newslist', ['title' => '新闻列表页', 'data' => $data,'req'=>$req]);
         } else {
             return back()->with("msg", "添加失败");
         }

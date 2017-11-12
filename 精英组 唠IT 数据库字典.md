@@ -126,18 +126,18 @@ CREATE TABLE `webinfo` (
 
 ### news 新闻表 ###
 
-| 名称 | 类型| 长度 | 是否为空 | 索引 | 注释 | 备注 |
-|  ----   |  ---- |  ---- |--------------|--------|-------|-------- |
-|   id    |  int  | 11   |      N        |          |        |  a_i    |
-|  title  |  varchar | 60  |  N  | 普通  | 新闻标题 |  |
-| content| text  | 65535 | N |  | 新闻内容 | |
-| img | varchar  | 300  |  |   |  多个图片间用逗号隔开  | |
-| tid | int |  11  |  N  |  普通  |  新闻类型的id  | |
-| nstatus | tinyint | 1 | N  |   | 状态 1: 展示 0:不展示 | 默认:0|
-| cid |  int | 1 |  N |  普通  |    |  关联新闻详情表|
-| created_at  | timestamp | 0 |  |  | 添加时间  | |
-| updated_at | timestamp | 0 |  |  |  修改时间 |  |
-| deleted_at  | timestamp  | 0 |  |  | 删除时间 | |
+| 名称 		 | 类型		 | 长度  | 是否为空 | 索引 | 注释 					|
+|  ----   	 |  ----     |  ---- |---	   |----- |-------					|
+|   id    	 |  int      | 11    | N 	   |      |       			    	|
+|  title  	 |varchar    | 60    | N 	   | 普通 | 新闻标题 					|
+| content 	 | text      | 65535 | N 	   |  	  | 新闻内容 				|
+| img 	  	 |varchar    | 300   |   	   |   	  | 多个图片间用逗号隔开    	|
+| tid 	  	 | int       |  11   | N 	   | 普通 | 新闻类型的id 				|
+| nstatus 	 |tinyint    | 1     | N 	   |   	  | 状态 1: 展示 0:不展示  	|
+| cid 	  	 |  int      | 1 	 | N 	   | 普通 |  关联新闻详情表			|
+| created_at | timestamp | 0 	 |   	   |      | 添加时间  				|
+| updated_at | timestamp | 0 	 |   	   |      |  修改时间 				|
+| deleted_at | timestamp | 0 	 |   	   |      | 删除时间 				|
 
 - 后台新闻列表判断
 	- 新闻只能发在三级板块

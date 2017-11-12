@@ -10,9 +10,9 @@ class newsmodel extends Model
    	public $table = 'news';
    	//设置白名单
    	protected $fillable = ['nstatus'];
-    //从属关系
-    public function country()
+   	//从属关系
+   	public function news()
     {
-        return $this->belongsTo('App\Http\Model\newsmodel','tid');
+        return $this->hasMany('App\Http\Model\newsmodel','tid');
     }
 }

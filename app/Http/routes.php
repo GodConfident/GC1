@@ -9,10 +9,11 @@
 */
 //打印sql语句
   // DB::listen(function($sql, $bindings, $time) { dump($sql); });
+//前台主页路由
+Route::controller('/home/index', 'Home\IndexController');
+//首页新闻板块路由
+Route::get('home/news/{name?}', 'Home\NewsTypeController@news');
 
-Route::get('/home/index', function () {
-   return view('Home.index');
-});
 Route::get('layouts1', function () {
    return view('Home.layouts1');
 });
@@ -22,7 +23,7 @@ Route::get('layouts1', function () {
 // });
 
 // 前台新闻路由
-Route::resource('/home/news', 'Home\NewsControllers');
+// Route::resource('/home/news', 'Home\NewsControllers');
 
 // 后台首页
 Route::controller('/admin/login', 'Admin\LoginController');
@@ -70,9 +71,7 @@ Route::get('/admin/conf/websetadd', 'Admin\ConfController@websetadd');
 Route::post('/admin/conf/webchange', 'Admin\ConfController@webchange');
 //网站配置路由
 Route::resource('/admin/conf', 'Admin\ConfController');
-Route::post('users/', function() {
-    //
-});
+
 
 
 

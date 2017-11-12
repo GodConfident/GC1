@@ -1,10 +1,6 @@
 <!-- 首页 各种板块新闻 -->
  @section('content')
 @show
-
-
-
-
             </div>
             <div class="con_2">
                 <div class="img_listbox">

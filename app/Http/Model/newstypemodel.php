@@ -12,4 +12,5 @@ class newstypemodel extends Model
    	public $primaryKey = 'type_id';
    	//关闭自动维护字段
    	public $timestamps = false;
+
 }
